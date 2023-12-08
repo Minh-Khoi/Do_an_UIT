@@ -1,0 +1,61 @@
+.grid_up{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: stretch;
+}
+
+.grid_up .first {
+    flex-basis: 40%;
+    font-size: 1.5em;
+    align-self: stretch;
+}
+.grid_up .first .group_three_columns .row_,
+.grid_up .first .group_two_columns .row_ {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin: 0.2em 0;
+}
+.grid_up .first .group_three_columns .row_ > *:not(.first-col) {
+    flex-basis: 40%;
+}
+.grid_up .first .group_two_columns .row_ > *:not(.first-col){
+    flex-basis: 80%;
+}
+.grid_up .first .group_three_columns .row_ > .first_col ,
+.grid_up .first .group_two_columns .row_ > .first_col{
+    flex-basis: 20%;
+}
+.grid_up .first .group_two_columns .row_ > .first_col{
+    display: flex;
+    flex-direction: column;
+}
+.grid_up .first .group_two_columns .row_ > .first_col>*,
+.grid_up .first .group_three_columns .row_ > .first_col>*{
+    margin-top: 0.5em;
+}
+.grid_up .first .group_three_columns .row_ > *:not(.first_col) > input,
+.grid_up .first .group_two_columns .row_ > *:not(.first_col) > input,
+.grid_up .first .group_two_columns .row_ > *:not(.first_col) > select,
+.grid_up .first .group_three_columns .row_ > *:not(.first_col) >select {
+    width: 70%;
+}
+
+
+.grid_up .second {
+    flex-basis: 60%;
+    width: 100%;
+    align-self: stretch;
+}
+.grid_up >.second > h3 {
+    color: red;
+}
+
+.grid_up >.second > object.pdf {
+    width: 100%;
+    height: 90%;
+}
+.grid_up .first > h3 {
+    color: red;
+    font-weight: 500;
+}

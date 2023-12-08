@@ -1,0 +1,74 @@
+.grid_down{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: stretch;
+    padding-top: 1em;
+}
+
+.grid_down .first {
+    flex-basis: 40%;
+    font-size: 1.5em;
+    align-self: stretch;
+}
+        
+.grid_down .second {
+    flex-basis: 60%;
+    width: 100%;
+    align-self: stretch;
+}
+
+.grid_down .second > .flexed_area{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: stretch;
+}
+
+.grid_down .second > .flexed_area > .align_left{
+    flex-basis: 30%;
+    padding-left: 1em;
+    padding-top: 2em;
+    align-self: stretch;
+}
+.grid_down .second > .flexed_area > .align_left > *{    
+    margin-right: 4%;
+    height: 2.5em;
+}
+.grid_down .second > .flexed_area > .align_left > select{
+    width: 100%;
+}
+.grid_down .second > .flexed_area > .align_left > button{
+    width: 45.423%;
+    color: red;
+    display: inline-block;
+    margin-top: 0.5em;
+}
+
+.grid_down .second > .flexed_area > .align_left > .base_line {
+    margin: 1.5em 0 0 0;
+}
+.grid_down .second > .flexed_area > .align_right{
+    flex-basis: 70%;
+    align-self: stretch;
+}
+
+.grid_down .second > .flexed_area > .align_right> *{
+    padding-left: 1em;
+}
+
+.grid_down .second > .flexed_area > .align_right >*> h3{
+    color: red;
+    margin-bottom: 0.4em;
+}
+.grid_down .second > .flexed_area > .align_right textarea{
+    resize: none;
+}
+.grid_down .second > .flexed_area > .align_right > .base_line{
+    margin: 0.63em 10% 0 0;
+}
+
+.grid_down .second > .non_flexed_area{
+    cursor: default;
+    background-color: rgba(59, 59, 59, 0.08);
+    border: 1px solid rgba(118, 118, 118, 0.3);
+    width: 95%;
+}

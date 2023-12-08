@@ -1,0 +1,275 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ket qua Sieu am</title>
+    <link rel="stylesheet" href="{% static 'main/nav/css.css' %}">
+    <link rel="stylesheet" href="{% static 'main/grid_up/css.css' %}">
+    <link rel="stylesheet" href="{% static 'main/grid_down/css.css' %}">
+    <style>
+        body{
+            width: 120em;
+            border: 1px solid rgb(0, 17, 255);
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-left">
+            <a href="/polls/don_vi" target="_blank">
+                <button class="nav-button">
+                    <img src="{%static 'main/image/bag.png'%}" alt="bag img" srcset="">
+                    <span>Đơn vị Sử dụng</span>
+                </button>
+            </a>
+            
+            <a href="" target="_blank">
+                <button class="nav-button">
+                    <img src="{%static 'main/image/book.png'%}" alt="bag img" srcset="">
+                    <span>Mẫu siêu âm</span>
+                </button>
+            </a>
+            
+            <a href="" target="_blank">
+                <button class="nav-button">
+                    <img src="{%static 'main/image/statist.png'%}" alt="bag img" srcset="">
+                    <span>Thống kê</span>
+                </button>
+            </a>
+        </div>
+
+        <div class="nav-field">
+            <select name="field_date" id="field_date">
+                <option value="20231116">Sunday, November 26th 2023</option>
+            </select>
+            <input type="checkbox" name="so_phieu" id="so_phieu"/>
+            <label for="so_phieu">So Phieu</label>
+            <input type="text" value=""/>
+        </div>
+        <div style="clear: both;"></div>
+    </nav>
+    <form action="">
+    
+        <div class="grid_up">
+            <div class="first">
+                <h3>THÔNG TIN HÀNH CHÍNH</h3>
+                <div class="group_three_columns">
+                    <div class="row_">
+                        <div class="first_col">
+                            <input type="checkbox" id="IDBN_check" name="IDBN_check" value="X" checked/>
+                            <label for="IDBN_check">IDBN</label>
+                        </div>
+                        <div class="second_col" style="flex-basis: 30%;">
+                            <input type="text" id="IDBN" name="IDBN"/>
+                        </div>
+                        <div class="third_col" style="flex-basis: 50%;">
+                            <label for="khoa">Khoa</label>
+                            <input type="text" id="khoa" name="khoa"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="group_three_columns">
+                    <div class="row_">
+                        <div class="first_col">
+                            <label for="ho_va_ten_BN">Họ và tên BN:</label>
+                        </div>
+                        <div class="second_col" >
+                            <input type="text" id="ho_va_ten_BN" name="ho_va_ten_BN"/>
+                        </div>
+                        <div class="third_col" >
+                            <input type="text" id="DSBN_button" 
+                                    name="DSBN_button" value="Danh sách Bệnh nhân" disabled/>
+                        </div>
+                    </div>
+                </div>
+                <div class="group_three_columns">
+                    <div class="row_">
+                        <div class="first_col">
+                            <label for="nam_sinh">Năm sinh</label>
+                        </div>
+                        <div class="second_col" >
+                            <input type="date" id="nam_sinh" name="nam_sinh"/>
+                        </div>
+                        <div class="third_col" >
+                            <label for="gioi_tinh">Gioi tinh</label>
+                            <select id="gioi_tinh" name="gioi_tinh" >
+                                <Option value="nam">Nam</Option>
+                                <Option value="nu">Nu</Option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="group_three_columns">
+                    <div class="row_">
+                        <div class="first_col">
+                            <label for="sdt">SĐT</label>
+                        </div>
+                        <div class="second_col" >
+                            <input type="text" id="sdt" name="sdt"/>
+                        </div>
+                        <div class="third_col" >
+                            <label for="BHYT">BHYT</label>
+                            <input type="text" id="BHYT" name="BHYT" />
+                        </div>
+                    </div>
+                </div>
+                <div class="group_two_columns">
+                    <div class="row_">
+                        <div class="first_col">
+                            <label for="dia_chi">Địa chỉ</label>
+                        </div>
+                        <div class="second_col" >
+                            <select name="dia_chi" id="dia_chi"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="group_two_columns">
+                    <div class="row_">
+                        <div class="first_col">
+                            <label for="bs_sieu_am">BS Siêu âm</label>
+                        </div>
+                        <div class="second_col" >
+                            <select name="bs_sieu_am" id="bs_sieu_am"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="group_two_columns">
+                    <div class="row_">
+                        <div class="first_col">
+                            <label for="bs_chi_dinh">BS chỉ định</label>
+                        </div>
+                        <div class="second_col" >
+                            <select name="bs_chi_dinh" id="bs_chi_dinh"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="group_two_columns">
+                    <div class="row_">
+                        <div class="first_col">
+                            <label for="mau_sieu_am">BS chỉ định</label>
+                        </div>
+                        <div class="second_col" >
+                            <select name="mau_sieu_am" id="mau_sieu_am"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="group_two_columns">
+                    <div class="row_">
+                        <div class="first_col" style="flex-wrap: wrap; align-content: center;">
+                            <label for="chan_doan" style="margin-left: -1em;">Chẩn đoán</label>
+                            <button style="color: red; width: 70%;">(F2) Mới</button>
+                            <img src="{%static 'main/grid_up/bieu_tuong_chan_doan.png'%}" 
+                                 alt="bieu_tuong_chan_doan" style="flex-basis: 20%;width: 70%;" />
+                        </div>
+                        <div class="second_col" >
+                            <textarea name="chan_doan" id="chan_doan" cols="50" rows="10"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="second">
+                <h3>NỘI DUNG KẾT QUẢ</h3>
+                <object data="{%static 'main/grid_up/Nguyen_Ngoc_Minh_Khoi_CV.pdf'%}" class="pdf"
+                        type="application/pdf" width="100%" height="500px">
+                    <p>Unable to display PDF file. 
+                        <a href="{%static 'main/grid_up/Nguyen_Ngoc_Minh_Khoi_CV.pdf'%}">
+                            Download
+                        </a> instead.
+                    </p>
+                </object>
+            </div>
+        </div>
+    
+        <div class="grid_down">
+            <div class="first">
+                <div class="jumbotron">
+                    <div style="text-align: center;">
+                        <video id="video" style="text-align: center; border-radius: 20px;"></video>
+                    </div>
+                </div>
+            </div>
+            <div class="second">
+                <div class="flexed_area">
+                    <div class="align_left">
+                        <select name="camera_type" id="camera_type">
+                            <option value="HP">HP</option>
+                        </select>
+                        <button type="button" onclick="clickPhoto();">Take Photo</button>
+                        <button>Quay Video</button>
+                        <button>Mở lấy hình </button>
+                        <button>Ngắt Card</button>
+                        <button style="width: 100%;">Cài đặt</button>
+                        <div class="base_line">
+                            <span style="float:left">
+                                <input type="checkbox" name="tu_dong_cat_hinh" id="tu_dong_cat_hinh" />
+                                <label for="tu_dong_cat_hinh">Tự động cắt hình</label>
+                            </span>
+                            <span style="float:right;margin-top:0.35em;">00:00</span>
+                            <div style="clear:both;"></div>
+                        </div>
+                    </div>
+                    <div class="align_right">
+                        <div class="ket_luan_container">
+                            <h3><label for="ket_luan">Kết luận</label></h3>
+                            <textarea name="ket_luan" id="ket_luan" cols="80" rows="3" disabled></textarea>
+                        </div>
+                        <div class="de_nghi_container">
+                            <h3><label for="de_nghi">Đề nghị</label></h3>
+                            <textarea name="de_nghi" id="de_nghi" cols="80" rows="3" disabled></textarea>
+                        </div>
+                        <div class="base_line">
+                            <span style="float:left">
+                                <input type="checkbox" name="tai_kham" id="tai_kham" />
+                                <label for="tai_kham">Tái khám</label>
+                            </span>
+                            <span style="float:right;margin-top:0.2em;width:40%; text-align: right;">
+                                <span class="date_formatted_display"></span>
+                                <input type="datetime-local" name="ngay_tai_kham" id="ngay_tai_kham" 
+                                        onchange="displayDateFormat_1()" style="width: 7%;" >
+                            </span>
+                            <div style="clear:both;"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="non_flexed_area"> 
+                    <canvas id="myCanvas" height="300"
+                            style="text-align: center; border-radius: 20px; height: 100%;"></canvas>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+<script src="{% static 'main/nav/js.js' %}"></script>
+<script src="{% static 'main/grid_down/camera.js' %}"></script>
+<script>
+    function displayDateFormat_1() {
+        const dateInput = document.getElementById('ngay_tai_kham');
+        const dateValue = dateInput.value;
+
+        const date = new Date(dateValue);
+        const dayOfWeek = date.getDay();
+        const month = date.getMonth();
+        const dayOfMonth = date.getDate();
+        const year = date.getFullYear();
+    
+        const formattedDate = getDayOfWeek(dayOfWeek) + ', ' + getMonthName(month) + ' ' + dayOfMonth + ', ' + year;
+        console.log(formattedDate);
+        document.querySelector('.date_formatted_display').innerHTML = formattedDate;
+    }
+
+    function getDayOfWeek(dayOfWeek) {
+        const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        return daysOfWeek[dayOfWeek];
+    }
+
+    function getMonthName(month) {
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
+                        'August', 'September', 'October', 'November', 'December'];
+        return months[month];
+    }
+</script>
+</html>
