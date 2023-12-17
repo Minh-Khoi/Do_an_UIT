@@ -1,0 +1,82 @@
+.container .right_col {
+    flex-basis: 70%;
+    padding-left: 1em;
+}
+
+.container .right_col .col_up {
+    margin-bottom: 1em;
+}
+
+.container .right_col .col_up .tieu_de_phong_kham {
+    height: 5em;
+    width: 100%;
+    border: 0.1em  solid black;
+}
+
+
+.container .right_col .col_down > .inline_items {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1em;
+    margin-bottom:  1em;
+}
+
+.container .right_col .col_down > .inline_items > .common_items{
+    flex-basis: 60%;
+    font-size: 1.5em;
+}
+
+.container .right_col .col_down > .inline_items > .common_items > label{
+    width: 30%;
+    margin: 0 2em;
+}
+
+.container .right_col .col_down > .inline_items > .common_items > input#ten_{
+    width: 70%;
+    height: 1.5em;
+}
+.container .right_col .col_down > .inline_items > .common_items > button{
+    width: 13em;
+    height: 2.5em;
+    margin-top: 1.3em;
+    float: right;
+    color: red
+}
+.container .right_col .col_down > .inline_items > .chuky{
+    flex-basis: 40%;
+    display: flex;
+    flex-direction: row;
+}
+
+.container .right_col .col_down > .inline_items > .chuky > label{
+    background-color: buttonface;
+    flex-basis: 30%;
+    height: 100%;
+    display: inline-block;
+    font-size: 1.5em;
+    border: 1px solid black;
+}
+
+.container .right_col .col_down > .inline_items > .chuky > img{
+    max-height: 100%;
+    flex-basis: 60%;
+    max-width: 60%;
+}
+
+.container .right_col .col_down > .table_item {
+    border: 1px solid black;
+    min-height: 5em;
+}
+.container .right_col .col_down > .table_item table, 
+.container .right_col .col_down > .table_item tr,
+.container .right_col .col_down > .table_item th,
+.container .right_col .col_down > .table_item td {
+    border-collapse: collapse;
+    border:  1px solid black;
+    min-height: 1.5em;
+    min-width: 3em;
+}
+/* .container .right_col .col_down > .table_item table{
+    border-spacing: 1.5em;
+    border-collapse: separate;
+} */

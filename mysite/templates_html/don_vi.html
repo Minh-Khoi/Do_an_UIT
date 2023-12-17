@@ -1,13 +1,19 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đơn vị</title>
+    <link rel="stylesheet" href="{% static 'don_vi/left_col/css.css' %}">
+    <link rel="stylesheet" href="{% static 'don_vi/right_col/css.css' %}">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
 </head>
 <style>
     body{
-        width: 120em;
+        width: 100vw;
         border: 1px solid rgb(0, 17, 255);
         font-size: 14px;
     }
@@ -17,16 +23,64 @@
         <div class="left_col">
             <h3>Logo</h3>
             <div>
-                <img src="" alt="logo" class="logo" />
+                <img src="{% static 'don_vi/left_col/logo.png' %}" alt="logo" class="logo" />
             </div>
             <h3>Danh sách địa chỉ</h3>
             <div>
-                <textarea name="ds_dia_chi" id="ds_dia_chi" cols="30" rows="10" disabled></textarea>
+                <div class="ds_dia_chi" contenteditable="true" ></div>
             </div>
         </div>
         <div class="right_col">
+            <div class="col_up">
+                <h3>Tiêu đề phòng khám</h3>
+                <div class="tieu_de_phong_kham" contenteditable="true" >
+                
+                </div>
+            </div>
+            <div class="col_down">
+                <div class="choosing_tab">
+                    <button type="button" class="ds_bac_si" onclick="triggerTab(event)">Danh sách bác sĩ</button>
+                    <button type="button" class="ds_khoa" onclick="triggerTab(event)">Danh sách khoa</button>
+                </div>
+                <div class="inline_items">
+                    <div class="common_items">
+                        <label for="ten_">Tên bác sĩ</label>
+                        <input type="text" name="ten_" id="ten_" disabled />
+                        <br/>
+                        <button type="button" class="tao_moi">Tạo mới</button>
+                        <button type="button" class="luu_ten">Lưu tên</button>
+                        <button type="button" class="xoa_ten">Xóa</button>
+                        <div style="clear: both;"></div>
+                    </div>
+                    <div class="chuky display_triggered" data-displayed="true" data-display-trigger="bac_si">
+                        <img src="" alt="img_chu_ky" />
+                        <input type="file" name="chuky_upload" id="chuky_upload" style="display: none;"/>
+                        <label for="chuky_upload">Chọn chữ ký</label>
+                    </div>
+                </div>
+                <div class="table_item" contenteditable="true">
+                    <table class="tb_ds_bac_si display_triggered" data-display-trigger="bac_si"
+                            data-displayed="true">
+                        <thead>
+                            <tr>
+                                <th>&nbsp; ID&nbsp;</th>
+                                <th>&nbsp;Họ tên bác sĩ&nbsp;</th>
+                                <th>&nbsp;Hình chữ ký&nbsp;</th>
+                            </tr>
+                        </thead>
+                    </table>
 
+                    <table class="tb_ds_khoa display_triggered" data-display-trigger="khoa"
+                            data-displayed="false" style="display: none;">
+                        <th>ID</th>
+                        <th>Tên Khoa</th>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </body>
+
+<script src="{% static 'don_vi/right_col/triggerTab.js' %}"></script>
+<script src="{% static 'don_vi/right_col/displayImg.js' %}"></script>
 </html>

@@ -5,6 +5,11 @@
     flex-basis: 30%;
 }
 
+.container .left_col .ds_dia_chi {
+    height: 5em;
+    width: 100%;
+    border: 0.1em  solid black;
+}
 
 .container .right_col {
     flex-basis: 70%;
