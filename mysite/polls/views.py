@@ -14,3 +14,7 @@ def home(request):
 def don_vi(request):
     return render(request, CONST_ROOT.ROOT + '/mysite/templates_html/don_vi.html')
 
+
+def thong_tin_hc(request):
+    return render(request, CONST_ROOT.ROOT + '/mysite/templates_html/thongke.html')
+

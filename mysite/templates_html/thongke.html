@@ -1,0 +1,134 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thống kê kết quả</title>
+    <link rel="stylesheet" href="{% static 'thong_tin_hc/style.css' %}">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+</head>
+
+<body>
+    <div>
+        <h3>Thông Tin Hành Chính</h3>
+        <form action="">
+            <table>
+                <tr>
+                    <td>
+                        <label for="sophieu">Số phiếu: </label>
+                        <input type="text" name="sophieu">
+                    </td>
+                    <td>
+                        <label for="idbn">IDBN: </label>
+                        <input type="text" name="idbn">
+                    </td>
+                    <td>
+                        <input type="checkbox" name="filterdate">
+                    </td>
+                    <td>
+                        <label for="fromdate">Từ ngày </label>
+                        <input type="date" name="fromdate">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"><label for="hoten">Họ tên BN: </label>
+                        <input type="text" name="hoten" style="width: 80%;">
+                    </td>
+                    <td colspan="2" style="padding-left: 45px;">
+                        <label for="todate">Đến ngày </label>
+                        <input type="date" name="todate">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label for="gioitinh">Giới tính: </label>
+                        <select name="gioitinh">
+                            <option value="nam">Nam</option>
+                            <option value="nu">Nữ</option>
+                        </select>
+                    </td>
+                    <td>
+                        <label for="namsinh">Năm sinh: </label>
+                        <input type="text" name="namsinh">
+                    </td>
+                    <td colspan="2" style="padding-left: 45px;">
+                        <input type="button" name="filter" value="Lọc tất cả">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label for="bacsi">Bác sĩ thực hiện: </label>
+                        <select name="bacsi">
+                            <option value="choose">-Chọn bác sĩ-</option>
+                            <option value="nva">Nguyễn Văn A</option>
+                    </td>
+                    <td colspan="2" style="padding-left: 45px;">
+                        <input type="button" name="find" value="Tìm">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label for="loaisieuam">Loại siêu âm: </label>
+                        <select name="loaisieuam">
+                            <option value="nam">-Chọn loại siêu âm-</option>
+                            <option value="tim">Siêu âm tim</option>
+                    </td>
+                    <td colspan="2" style="padding-left: 45px;">
+                        <input type="button" name="delete" value="Xóa">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label for="chuandoan">Chuẩn đoán: </label>
+                        <input type="text" name="chuandoan" style="width: 79%;" >
+                    </td>
+                    <td colspan="2" style="padding-left: 45px;">
+                        <input type="button" name="output" value="Xuất ra Excel">
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+
+    <div>
+        <h3>Danh Sách Thống Kê</h3>
+        <table>
+            <tr>
+                <th></th>
+                <th>Xóa</th>
+                <th>ID</th>
+                <th>Ngày</th>
+                <th>Số phiếu</th>
+                <th>ID Bệnh Nhân</th>
+                <th>Tên Bệnh Nhân</th>
+                <th>Giới tính</th>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="checkbox"></td>
+                <td>Default</td>
+                <td>Default</td>
+                <td>Default</td>
+                <td>Default</td>
+                <td>Default</td>
+                <td>Default</td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input type="checkbox"></td>
+                <td>Default</td>
+                <td>Default</td>
+                <td>Default</td>
+                <td>Default</td>
+                <td>Default</td>
+                <td>Default</td>
+            </tr>
+        </table>
+    </div>
+</body>
+
+</html>
