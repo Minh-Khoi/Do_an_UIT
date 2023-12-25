@@ -51,9 +51,11 @@
     color: red;
 }
 
-.grid_up >.second > object.pdf {
+/* .grid_up >.second > object.pdf { */
+.grid_up >.second > .noi_dung_ket_qua {
     width: 100%;
     height: 90%;
+    border: 1px dotted black;
 }
 .grid_up .first > h3 {
     color: red;

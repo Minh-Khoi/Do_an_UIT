@@ -40,23 +40,23 @@
             <div class="col_down">
                 <div class="choosing_tab">
                     <button type="button" class="ds_bac_si" onclick="triggerTab(event)">Danh sách bác sĩ</button>
-                    <button type="button" class="ds_khoa" onclick="triggerTab(event)">Danh sách khoa</button>
+                    <!-- <button type="button" class="ds_khoa" onclick="triggerTab(event)">Danh sách khoa</button> -->
                 </div>
                 <div class="inline_items">
                     <div class="common_items">
                         <label for="ten_">Tên bác sĩ</label>
-                        <input type="text" name="ten_" id="ten_" disabled />
+                        <input type="text" name="ten_" id="ten_"  />
                         <br/>
                         <button type="button" class="tao_moi">Tạo mới</button>
                         <button type="button" class="luu_ten">Lưu tên</button>
                         <button type="button" class="xoa_ten">Xóa</button>
                         <div style="clear: both;"></div>
                     </div>
-                    <div class="chuky display_triggered" data-displayed="true" data-display-trigger="bac_si">
+                    <!-- <div class="chuky display_triggered" data-displayed="true" data-display-trigger="bac_si">
                         <img src="" alt="img_chu_ky" />
                         <input type="file" name="chuky_upload" id="chuky_upload" style="display: none;"/>
                         <label for="chuky_upload">Chọn chữ ký</label>
-                    </div>
+                    </div> -->
                 </div>
                 <div class="table_item" contenteditable="true">
                     <table class="tb_ds_bac_si display_triggered" data-display-trigger="bac_si"
@@ -70,11 +70,11 @@
                         </thead>
                     </table>
 
-                    <table class="tb_ds_khoa display_triggered" data-display-trigger="khoa"
+                    <!-- <table class="tb_ds_khoa display_triggered" data-display-trigger="khoa"
                             data-displayed="false" style="display: none;">
                         <th>ID</th>
                         <th>Tên Khoa</th>
-                    </table>
+                    </table> -->
                 </div>
             </div>
         </div>

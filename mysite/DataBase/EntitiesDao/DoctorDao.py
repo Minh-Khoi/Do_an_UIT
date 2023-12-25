@@ -1,6 +1,6 @@
-from mysite.DataBase.Entities import BacSi
-from mysite.DataBase.MSSQL_Connection_Static import MSSQLConnection
-
+from DataBase.Entities import BacSi
+from DataBase.MSSQL_Connection_Static import MSSQLConnection
+import dbconfig
 
 class DoctorDao:
     def queryalldoctors(self):
@@ -8,7 +8,11 @@ class DoctorDao:
         doctors = []
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 'DANHTRANCONG', 'python', '', '')
+            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 
+                                                                 dbconfig.server, 
+                                                                 dbconfig.database, 
+                                                                 dbconfig.username, 
+                                                                 dbconfig.password)
             cursor = connection.cursor()
             # Execute custom query
             sql = "select * from tb_BacSi"
@@ -28,7 +32,11 @@ class DoctorDao:
         """Delete by id"""
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 'DANHTRANCONG', 'python', '', '')
+            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 
+                                                                 dbconfig.server, 
+                                                                 dbconfig.database, 
+                                                                 dbconfig.username, 
+                                                                 dbconfig.password)
             cursor = connection.cursor()
             # Execute custom query
             sql = "delete from tb_BacSi where id= " + str(id)
@@ -43,7 +51,11 @@ class DoctorDao:
     def update(self, bs):
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 'DANHTRANCONG', 'python', '', '')
+            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 
+                                                                 dbconfig.server, 
+                                                                 dbconfig.database, 
+                                                                 dbconfig.username, 
+                                                                 dbconfig.password)
             cursor = connection.cursor()
             # Execute custom query
             sql = 'update tb_BacSi set HoTenBacSi = \'{0}\', HinhChuKy = \'{1}\'  where id = {2}'.format(bs.gethoten(),
@@ -60,7 +72,11 @@ class DoctorDao:
     def insert(self, bs):
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 'DANHTRANCONG', 'python', '', '')
+            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 
+                                                                 dbconfig.server, 
+                                                                 dbconfig.database, 
+                                                                 dbconfig.username, 
+                                                                 dbconfig.password)
             cursor = connection.cursor()
             # Execute custom query
             sql = 'insert into tb_BacSi(HoTenBacSi,HinhChuKy) values (\'{0}\',\'{1}\')'.format(bs.gethoten(),

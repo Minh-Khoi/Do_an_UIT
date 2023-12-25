@@ -1,12 +1,16 @@
-from mysite.DataBase.Entities import MauSieuAm
-from mysite.DataBase.MSSQL_Connection_Static import MSSQLConnection
-
+from DataBase.Entities import MauSieuAm
+from DataBase.MSSQL_Connection_Static import MSSQLConnection
+import dbconfig
 
 class UltrasoundExaminationDao:
     def insert(self, mausieuam):
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 'DANHTRANCONG', 'python', '', '')
+            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 
+                                                                 dbconfig.server, 
+                                                                 dbconfig.database, 
+                                                                 dbconfig.username, 
+                                                                 dbconfig.password)
             cursor = connection.cursor()
             # Execute custom query
             sql = ('insert into tb_MauSieuAm (STT, TenMau, TieuDe, GioiTinh, ChuaSuDung, '
@@ -37,7 +41,11 @@ class UltrasoundExaminationDao:
     def update(self, mausieuam):
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 'DANHTRANCONG', 'python', '', '')
+            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 
+                                                                 dbconfig.server, 
+                                                                 dbconfig.database, 
+                                                                 dbconfig.username, 
+                                                                 dbconfig.password)
             cursor = connection.cursor()
             # Execute custom query
             sql = ('update tb_MauSieuAm '
@@ -71,7 +79,11 @@ class UltrasoundExaminationDao:
         """Delete by id"""
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 'DANHTRANCONG', 'python', '', '')
+            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 
+                                                                 dbconfig.server, 
+                                                                 dbconfig.database, 
+                                                                 dbconfig.username, 
+                                                                 dbconfig.password)
             cursor = connection.cursor()
 
             # Execute custom query
@@ -89,7 +101,11 @@ class UltrasoundExaminationDao:
         ultrasoundexaminations = []
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 'DANHTRANCONG', 'python', '', '')
+            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 
+                                                                 dbconfig.server, 
+                                                                 dbconfig.database, 
+                                                                 dbconfig.username, 
+                                                                 dbconfig.password)
             cursor = connection.cursor()
             # Execute custom query
             sql = "select * from tb_MauSieuAm"

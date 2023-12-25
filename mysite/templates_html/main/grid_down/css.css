@@ -10,6 +10,10 @@
     font-size: 1.5em;
     align-self: stretch;
 }
+.grid_down .first button.luu_datas {
+    width: 100%;
+    min-height: 2.5em;
+}
         
 .grid_down .second {
     flex-basis: 60%;
@@ -59,8 +63,10 @@
     color: red;
     margin-bottom: 0.4em;
 }
-.grid_down .second > .flexed_area > .align_right textarea{
-    resize: none;
+.grid_down .second > .flexed_area > .align_right .ket_luan,
+.grid_down .second > .flexed_area > .align_right .de_nghi{
+    min-height: 4em;    
+    border: 1px dotted black;
 }
 .grid_down .second > .flexed_area > .align_right > .base_line{
     margin: 0.63em 10% 0 0;

@@ -68,7 +68,9 @@
                         </div>
                         <div class="third_col" style="flex-basis: 50%;">
                             <label for="khoa">Khoa</label>
-                            <input type="text" id="khoa" name="khoa"/>
+                            <select name="khoa" id="khoa" >
+                                <option value="nhi">Nhi</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -77,10 +79,10 @@
                         <div class="first_col">
                             <label for="ho_va_ten_BN">Họ và tên BN:</label>
                         </div>
-                        <div class="second_col" >
+                        <div class="second_col" style="flex-basis: 80%;">
                             <input type="text" id="ho_va_ten_BN" name="ho_va_ten_BN"/>
                         </div>
-                        <div class="third_col" >
+                        <div class="third_col" style="display:none">
                             <input type="text" id="DSBN_button" 
                                     name="DSBN_button" value="Danh sách Bệnh nhân" disabled/>
                         </div>
@@ -161,7 +163,7 @@
                     <div class="row_">
                         <div class="first_col" style="flex-wrap: wrap; align-content: center;">
                             <label for="chan_doan" style="margin-left: -1em;">Chẩn đoán</label>
-                            <button style="color: red; width: 70%;">(F2) Mới</button>
+                            <button style="color: red; width: 70%;" onclick="refreshForm(event)">(F2) Mới</button>
                             <img src="{%static 'main/grid_up/bieu_tuong_chan_doan.png'%}" 
                                  alt="bieu_tuong_chan_doan" style="flex-basis: 20%;width: 70%;" />
                         </div>
@@ -173,28 +175,36 @@
             </div>
             <div class="second">
                 <h3>NỘI DUNG KẾT QUẢ</h3>
-                <object data="{%static 'main/grid_up/Nguyen_Ngoc_Minh_Khoi_CV.pdf'%}" class="pdf"
+                <!-- <object data="{%static 'main/grid_up/Nguyen_Ngoc_Minh_Khoi_CV.pdf'%}" class="pdf"
                         type="application/pdf" width="100%" height="500px">
                     <p>Unable to display PDF file. 
                         <a href="{%static 'main/grid_up/Nguyen_Ngoc_Minh_Khoi_CV.pdf'%}">
                             Download
                         </a> instead.
                     </p>
-                </object>
+                </object> -->
+                <div class="noi_dung_ket_qua" contenteditable="true">
+                    <ul>
+                        <li>Heello</li>
+                        <li>world</li>
+                        <li>!!!</li>
+                    </ul>
+                </div>
             </div>
         </div>
     
         <div class="grid_down">
-            <div class="first">
-                <div class="jumbotron">
+            <div class="first" >
+                <!-- <div class="jumbotron" >
                     <div style="text-align: center;">
                         <video id="video" style="text-align: center; border-radius: 20px;"></video>
                     </div>
-                </div>
+                </div> -->
+                <button type="button" class="luu_datas">LƯU</button>
             </div>
             <div class="second">
                 <div class="flexed_area">
-                    <div class="align_left">
+                    <!-- <div class="align_left" >
                         <select name="camera_type" id="camera_type">
                             <option value="HP">HP</option>
                         </select>
@@ -211,17 +221,17 @@
                             <span style="float:right;margin-top:0.35em;">00:00</span>
                             <div style="clear:both;"></div>
                         </div>
-                    </div>
-                    <div class="align_right">
+                    </div> -->
+                    <div class="align_right" style="flex-basis: 99%;">
                         <div class="ket_luan_container">
                             <h3><label for="ket_luan">Kết luận</label></h3>
-                            <textarea name="ket_luan" id="ket_luan" cols="80" rows="3" disabled></textarea>
+                            <div class="ket_luan" id="ket_luan" contenteditable="true"></div>
                         </div>
                         <div class="de_nghi_container">
                             <h3><label for="de_nghi">Đề nghị</label></h3>
-                            <textarea name="de_nghi" id="de_nghi" cols="80" rows="3" disabled></textarea>
+                            <div class="de_nghi" id="de_nghi" contenteditable="true"></div>
                         </div>
-                        <div class="base_line">
+                        <!-- <div class="base_line">
                             <span style="float:left">
                                 <input type="checkbox" name="tai_kham" id="tai_kham" />
                                 <label for="tai_kham">Tái khám</label>
@@ -232,19 +242,19 @@
                                         onchange="displayDateFormat_1()" style="width: 7%;" >
                             </span>
                             <div style="clear:both;"></div>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
-                <div class="non_flexed_area"> 
+                <!-- <div class="non_flexed_area" > 
                     <canvas id="myCanvas" height="300"
                             style="text-align: center; border-radius: 20px; height: 100%;"></canvas>
-                </div>
+                </div> -->
             </div>
         </div>
     </form>
 </body>
 <script src="{% static 'main/nav/js.js' %}"></script>
-<script src="{% static 'main/grid_down/camera.js' %}"></script>
+<!-- <script src="{% static 'main/grid_down/camera.js' %}"></script> -->
 <script>
     function displayDateFormat_1() {
         const dateInput = document.getElementById('ngay_tai_kham');
@@ -271,5 +281,6 @@
                         'August', 'September', 'October', 'November', 'December'];
         return months[month];
     }
+    
 </script>
 </html>
