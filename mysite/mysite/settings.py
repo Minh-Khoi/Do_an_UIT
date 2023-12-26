@@ -44,7 +44,8 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    # https://www.makeuseof.com/django-csrf-tokens-what-why-need/#disabling-csrf-protection-on-your-entire-website
+    # 'django.middleware.csrf.CsrfViewMiddleware', # https://www.makeuseof.com/django-csrf-tokens-what-why-need/#disabling-csrf-protection-on-your-entire-website
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',

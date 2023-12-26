@@ -1,12 +1,5 @@
 ﻿-- before running script, please drop database Importing in SSMS
--- Create database Importing
-CREATE DATABASE [Importing]
- CONTAINMENT = NONE
- ON  PRIMARY 
-( NAME = N'Importing', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\DATA\Importing.mdf' , SIZE = 8192KB , FILEGROWTH = 65536KB )
- LOG ON 
-( NAME = N'Importing_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL15.SQLEXPRESS\MSSQL\DATA\Importing_log.ldf' , SIZE = 8192KB , FILEGROWTH = 65536KB )
-GO
+
 
 USE [Importing]
 GO
