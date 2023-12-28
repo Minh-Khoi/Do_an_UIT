@@ -5,6 +5,8 @@ from DataBase.EntitiesDao.PatientsDao import PatientsDao
 from DataBase.Entities.BenhNhan import BenhNhan
 from DataBase.EntitiesDao.DoctorDao import DoctorDao
 from DataBase.Entities.BacSi import BacSi
+from DataBase.EntitiesDao.UltrasoundDao import UltrasoundDao
+from DataBase.Entities.SieuAm import SieuAm
 from django.shortcuts import render
 import json
 

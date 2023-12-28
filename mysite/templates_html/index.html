@@ -6,6 +6,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ket qua Sieu am</title>
+    <!-- jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" 
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" 
+        crossorigin="anonymous"></script>
+    
     <link rel="stylesheet" href="{% static 'main/nav/css.css' %}">
     <link rel="stylesheet" href="{% static 'main/grid_up/css.css' %}">
     <link rel="stylesheet" href="{% static 'main/grid_down/css.css' %}">
@@ -200,7 +205,7 @@
                         <video id="video" style="text-align: center; border-radius: 20px;"></video>
                     </div>
                 </div> -->
-                <button type="button" class="luu_datas">LƯU</button>
+                <button type="button" class="luu_datas" onclick="save_home()">LƯU</button>
             </div>
             <div class="second">
                 <div class="flexed_area">
@@ -254,6 +259,8 @@
     </form>
 </body>
 <script src="{% static 'main/nav/js.js' %}"></script>
+<script src="{% static 'sendAjax.js' %}"></script>
+<script src="{% static 'main/ajaxBuild.js' %}"></script>
 <!-- <script src="{% static 'main/grid_down/camera.js' %}"></script> -->
 <script>
     function displayDateFormat_1() {
