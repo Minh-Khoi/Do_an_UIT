@@ -5,15 +5,18 @@ from DataBase.EntitiesDao.PatientsDao import PatientsDao
 from DataBase.Entities.BenhNhan import BenhNhan
 from DataBase.EntitiesDao.DoctorDao import DoctorDao
 from DataBase.Entities.BacSi import BacSi
+from DataBase.EntitiesDao.UltrasoundDao import UltrasoundDao
+from DataBase.Entities.SieuAm import SieuAm
 from django.shortcuts import render
 import json
 
 # Create your views here.
-from django.http import HttpResponse, HttpRequest 
+from django.http import HttpResponse, HttpRequest
+
 
 def index(request):
     mausa = MauSieuAm(77, 101, "Mau A", "Sieu Am Bung", "Nam", 0, "Chua co", 5, 3, "2D",
-                                     "Nen ghi chu y", "Khong co", "Binh thuong", "Can lam them cac xet nghiem khac")
+                      "Nen ghi chu y", "Khong co", "Binh thuong", "Can lam them cac xet nghiem khac")
 
     UltrasoundExaminationDao().insert(mausieuam=mausa)
     return HttpResponse("Hello, world. You're at the polls index. 55555")
@@ -48,9 +51,8 @@ def save_home(request):
         BHYT = benhnhan_data.get('BHYT')
         Del = benhnhan_data.get('Del')
 
-
         bn = BenhNhan(id=ID, idbenhnhan=IDBenhNhan, hotenbenhnhan=HoTenBenhNhan, gioitinh=GioiTinh,
-                            namsinh=NamSinh, diachi=DiaChi, sdt=SDT, bhyt=BHYT, dlt=Del)
+                      namsinh=NamSinh, diachi=DiaChi, sdt=SDT, bhyt=BHYT, dlt=Del)
 
         PatientsDao().insert(bn)
 
@@ -70,7 +72,8 @@ def save_home(request):
         DeNghi = sieuam_data.get('DeNghi')
         Khoa = sieuam_data.get('Khoa')
 
-        sieuam = SieuAm(id=ID_SieuAm, idbenhnhan=IDBenhNhan_SieuAm, tenbenhnhan=TenBenhNhan_SieuAm, ngay=Ngay, sophieu=SoPhieu, tenbacsisieuam=TenBacSiSieuAm,
+        sieuam = SieuAm(id=ID_SieuAm, idbenhnhan=IDBenhNhan_SieuAm, tenbenhnhan=TenBenhNhan_SieuAm, ngay=Ngay,
+                        sophieu=SoPhieu, tenbacsisieuam=TenBacSiSieuAm,
                         tenbacsichidinh=TenBacSiChiDinh, mausieuam=MauSieuAm, chuandoan=ChanDoan, noidung1=NoiDung1,
                         noidung2=NoiDung2, ketluan=KetLuan, denghi=DeNghi, khoa=Khoa)
 
@@ -80,11 +83,75 @@ def save_home(request):
     except Exception as e:
         return HttpResponse(f'Error: {str(e)}')
 
+
 def save_bacsi(request):
-    request_body = request.body
-    datas = json.loads(request_body)
-    json_obj = json.loads(request_body)
-    # goi class DAO va luu data
-    
-    return HttpResponse("")
-    pass
+    try:
+        request_body = request.body
+        datas = json.loads(request_body)
+        # goi class DAO va luu data
+
+        bacsi_data = datas.get('tb_BacSi', [])[0]
+        id = bacsi_data.get('ID')
+        ten = bacsi_data.get('HoTenBacSi')
+        chuky = bacsi_data.get("HinhChuKy")
+        # bs = BacSi(id=11, hoTen="Danh", chuKy="Nullll")
+        bs = BacSi(id, ten, chuky)
+        print(bs)
+        dd = DoctorDao()
+        dd.insert(bs)
+
+        return HttpResponse('Data saved successfully!')
+    except Exception as e:
+        return HttpResponse(f'Error: {str(e)}')
+
+
+def update_bacsi(request):
+    try:
+        request_body = request.body
+        datas = json.loads(request_body)
+        # goi class DAO va luu data
+
+        bacsi_data = datas.get('tb_BacSi', [])[0]
+        id = bacsi_data.get('ID')
+        ten = bacsi_data.get('HoTenBacSi')
+        chuky = bacsi_data.get("HinhChuKy")
+        # bs = BacSi(id=11, hoTen="Danh", chuKy="Nullll")
+        bs = BacSi(id, ten, chuky)
+        print(bs)
+        dd = DoctorDao()
+        dd.update(bs)
+
+        return HttpResponse('Update successfully!')
+    except Exception as e:
+        return HttpResponse(f'Error: {str(e)}')
+
+
+def delete_bacsi(request):
+    try:
+        request_body = request.body
+        datas = json.loads(request_body)
+        # goi class DAO va luu data
+
+        bacsi_data = datas.get('tb_BacSi', [])[0]
+        id = bacsi_data.get('ID')
+        dd = DoctorDao()
+        dd.delete(id)
+        return HttpResponse('Delete successfully!')
+    except Exception as e:
+        return HttpResponse(f'Error: {str(e)}')
+
+
+def delete_sieuam(request):
+    try:
+        request_body = request.body
+        datas = json.loads(request_body)
+        # goi class DAO va luu data
+
+        sieuam_data = datas.get('tb_SieuAm', [])[0]
+        ID_SieuAm = sieuam_data.get('ID')
+        print(ID_SieuAm)
+        ud = UltrasoundDao()
+        ud.delete(ID_SieuAm)
+        return HttpResponse('Delete successfully!')
+    except Exception as e:
+        return HttpResponse(f'Error: {str(e)}')
