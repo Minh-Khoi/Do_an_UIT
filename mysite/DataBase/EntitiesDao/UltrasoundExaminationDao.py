@@ -6,7 +6,7 @@ class UltrasoundExaminationDao:
     def insert(self, mausieuam):
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 
+            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver, 
                                                                  dbconfig.server, 
                                                                  dbconfig.database, 
                                                                  dbconfig.username, 
@@ -41,7 +41,7 @@ class UltrasoundExaminationDao:
     def update(self, mausieuam):
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 
+            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver, 
                                                                  dbconfig.server, 
                                                                  dbconfig.database, 
                                                                  dbconfig.username, 
@@ -79,7 +79,7 @@ class UltrasoundExaminationDao:
         """Delete by id"""
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 
+            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver, 
                                                                  dbconfig.server, 
                                                                  dbconfig.database, 
                                                                  dbconfig.username, 
@@ -96,12 +96,12 @@ class UltrasoundExaminationDao:
         finally:
             MSSQLConnection.MSSQLConnection.close_connection()
 
-    def queryall(self):
+    def queryall(self) -> list[MauSieuAm.MauSieuAm]:
         """Return list of patients"""
         ultrasoundexaminations = []
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 
+            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver, 
                                                                  dbconfig.server, 
                                                                  dbconfig.database, 
                                                                  dbconfig.username, 

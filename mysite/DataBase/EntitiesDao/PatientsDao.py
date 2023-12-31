@@ -9,7 +9,7 @@ class PatientsDao:
         patients = []
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 
+            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver, 
                                                                  dbconfig.server, 
                                                                  dbconfig.database, 
                                                                  dbconfig.username, 
@@ -32,7 +32,7 @@ class PatientsDao:
     def insert(self, bn):
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 
+            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver, 
                                                                  dbconfig.server, 
                                                                  dbconfig.database, 
                                                                  dbconfig.username, 
@@ -60,7 +60,7 @@ class PatientsDao:
     def update(self, bn):
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 
+            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver, 
                                                                  dbconfig.server, 
                                                                  dbconfig.database, 
                                                                  dbconfig.username, 
@@ -91,7 +91,7 @@ class PatientsDao:
         """Delete by id"""
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 
+            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver, 
                                                                  dbconfig.server, 
                                                                  dbconfig.database, 
                                                                  dbconfig.username, 

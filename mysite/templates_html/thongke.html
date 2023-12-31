@@ -9,9 +9,46 @@
     <title>Thống kê kết quả</title>
     <link rel="stylesheet" href="{% static 'thong_tin_hc/style.css' %}">
     <!-- <link rel="stylesheet" href="style.css"> -->
+    <!-- jquery cdn -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" 
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    
 </head>
 
 <body>
+    <span class="screenDatas" style="display: none;">{
+    "tb_BenhNhan": [
+        {
+            "ID": "",
+            "IDBenhNhan": "650678",
+            "HoTenBenhNhan": "asd fdsfdf",
+            "GioiTinh": "nam",
+            "NamSinh": "2023-11-29",
+            "DiaChi": null,
+            "SDT": "2054065056",
+            "BHYT": "55556666",
+            "Del": "N/A"
+        }
+    ],
+    "tb_SieuAm": [
+        {
+            "ID": "",
+            "Ngay": "2023-12-28",
+            "SoPhieu": "650678",
+            "IDBenhNhan": "650678",
+            "TenBenhNhan": "asd fdsfdf",
+            "TenBacSiSieuAm": null,
+            "TenBacSiChiDinh": null,
+            "MauSieuAm": null,
+            "ChanDoan": "a sdfdsafdsa",
+            "NoiDung1": "\n                    \n                        Heello\n                        world\n                        !!! asdfds\n                    \n                ",
+            "NoiDung2": "",
+            "KetLuan": " asdfadsf dsfds",
+            "DeNghi": " asdfadsfrger",
+            "Khoa": "nhi"
+        }
+    ]
+}</span>
     <div>
         <h3>Thông Tin Hành Chính</h3>
         <form action="">
@@ -19,74 +56,76 @@
                 <tr>
                     <td>
                         <label for="sophieu">Số phiếu: </label>
-                        <input type="text" name="sophieu">
+                        <input type="text" name="sophieu" id="sophieu">
                     </td>
                     <td>
                         <label for="idbn">IDBN: </label>
-                        <input type="text" name="idbn">
+                        <input type="text" name="idbn" id="idbn">
                     </td>
                     <td>
-                        <input type="checkbox" name="filterdate">
+                        <input type="checkbox" name="filterdate" id="filterdate">
                     </td>
                     <td>
                         <label for="fromdate">Từ ngày </label>
-                        <input type="date" name="fromdate">
+                        <input type="date" name="fromdate" id="fromdate">
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2"><label for="hoten">Họ tên BN: </label>
-                        <input type="text" name="hoten" style="width: 80%;">
+                        <input type="text" name="hoten" style="width: 80%;" id="hoten">
                     </td>
                     <td colspan="2" style="padding-left: 45px;">
                         <label for="todate">Đến ngày </label>
-                        <input type="date" name="todate">
+                        <input type="date" name="todate" id="todate">
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <label for="gioitinh">Giới tính: </label>
-                        <select name="gioitinh">
+                        <select name="gioitinh" id="gioitinh">
                             <option value="nam">Nam</option>
                             <option value="nu">Nữ</option>
                         </select>
                     </td>
                     <td>
                         <label for="namsinh">Năm sinh: </label>
-                        <input type="text" name="namsinh">
+                        <input type="text" name="namsinh" id="namsinh">
                     </td>
                     <td colspan="2" style="padding-left: 45px;">
-                        <input type="button" name="filter" value="Lọc tất cả">
+                        <input type="button" name="filter" value="Lọc tất cả" id="filter">
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
                         <label for="bacsi">Bác sĩ thực hiện: </label>
-                        <select name="bacsi">
+                        <select name="bacsi" id="bacsi">
                             <option value="choose">-Chọn bác sĩ-</option>
-                            <option value="nva">Nguyễn Văn A</option>
+                            <!-- <option value="nva">Nguyễn Văn A</option> -->
+                        </select>
                     </td>
                     <td colspan="2" style="padding-left: 45px;">
-                        <input type="button" name="find" value="Tìm">
+                        <input type="button" name="find" value="Tìm" id="find">
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
                         <label for="loaisieuam">Loại siêu âm: </label>
-                        <select name="loaisieuam">
-                            <option value="nam">-Chọn loại siêu âm-</option>
-                            <option value="tim">Siêu âm tim</option>
+                        <select name="loaisieuam" id="loaisieuam">
+                            <option value="choose">-Chọn loại siêu âm-</option>
+                            <!-- <option value="tim">Siêu âm tim</option> -->
+                        </select>
                     </td>
                     <td colspan="2" style="padding-left: 45px;">
-                        <input type="button" name="delete" value="Xóa">
+                        <input type="button" name="delete" value="Xóa" id="delete">
                     </td>
                 </tr>
                 <tr>
                     <td colspan="2">
                         <label for="chuandoan">Chuẩn đoán: </label>
-                        <input type="text" name="chuandoan" style="width: 79%;" >
+                        <input type="text" name="chuandoan" style="width: 79%;"  id="chuandoan">
                     </td>
                     <td colspan="2" style="padding-left: 45px;">
-                        <input type="button" name="output" value="Xuất ra Excel">
+                        <input type="button" name="updateDetails" value="Chi tiết" id="updateDetails">
                     </td>
                 </tr>
             </table>
@@ -95,10 +134,10 @@
 
     <div>
         <h3>Danh Sách Thống Kê</h3>
-        <table>
-            <tr>
+        <table class="danh_sach_thong_ke">
+            <tr class="top_row">
                 <th></th>
-                <th>Xóa</th>
+                <th>Chọn</th>
                 <th>ID</th>
                 <th>Ngày</th>
                 <th>Số phiếu</th>
@@ -106,6 +145,17 @@
                 <th>Tên Bệnh Nhân</th>
                 <th>Giới tính</th>
             </tr>
+            <tr style="display: none;" onclick="tableClick(event)">
+                <td></td>
+                <td><input type="checkbox" ></td>
+                <td>Default</td>
+                <td>Default</td>
+                <td>Default</td>
+                <td>Default</td>
+                <td>Default</td>
+                <td>Default</td>
+            </tr>
+<!-- 
             <tr>
                 <td></td>
                 <td><input type="checkbox"></td>
@@ -115,20 +165,16 @@
                 <td>Default</td>
                 <td>Default</td>
                 <td>Default</td>
-            </tr>
-
-            <tr>
-                <td></td>
-                <td><input type="checkbox"></td>
-                <td>Default</td>
-                <td>Default</td>
-                <td>Default</td>
-                <td>Default</td>
-                <td>Default</td>
-                <td>Default</td>
-            </tr>
+            </tr> -->
         </table>
     </div>
 </body>
-
+<script src="{% static 'sendAjax.js' %}"></script>
+<script src="{% static 'thong_tin_hc/init.js' %}"></script>
+<script src="{% static 'thong_tin_hc/tableClick.js' %}"></script>
+<script>
+    window.onload = () => {
+        queryDatas();
+    }
+</script>
 </html>

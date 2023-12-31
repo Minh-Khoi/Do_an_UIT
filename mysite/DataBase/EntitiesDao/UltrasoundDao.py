@@ -7,7 +7,7 @@ class UltrasoundDao:
         """Delete by id"""
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 
+            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver, 
                                                                  dbconfig.server, 
                                                                  dbconfig.database, 
                                                                  dbconfig.username, 
@@ -27,7 +27,7 @@ class UltrasoundDao:
     def insert(self, sieuam):
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 
+            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver, 
                                                                  dbconfig.server, 
                                                                  dbconfig.database, 
                                                                  dbconfig.username, 
@@ -63,7 +63,7 @@ class UltrasoundDao:
     def update(self, sieuam):
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 
+            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver, 
                                                                  dbconfig.server, 
                                                                  dbconfig.database, 
                                                                  dbconfig.username, 
@@ -102,7 +102,7 @@ class UltrasoundDao:
         ultrasound = []
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 
+            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver, 
                                                                  dbconfig.server, 
                                                                  dbconfig.database, 
                                                                  dbconfig.username, 

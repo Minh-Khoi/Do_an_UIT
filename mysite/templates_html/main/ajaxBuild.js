@@ -1,6 +1,6 @@
 function buildRequestBody() {
     let tb_BenhNhan = {
-        "ID": "",
+        "ID": $("#IDBN").val(),
         "IDBenhNhan": $("#IDBN").val(),
         "HoTenBenhNhan": $("#ho_va_ten_BN").val(),
         "GioiTinh": $("#gioi_tinh").val(),

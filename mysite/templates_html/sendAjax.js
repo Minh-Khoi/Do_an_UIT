@@ -1,5 +1,4 @@
 function sendAPI(requestBody, url_path) {
-    debugger;
     $.ajax({
         type: "POST",
         url: "http://localhost:8000/polls/" + url_path.trim(),

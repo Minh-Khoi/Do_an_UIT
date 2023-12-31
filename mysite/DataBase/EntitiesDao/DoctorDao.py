@@ -3,12 +3,12 @@ from DataBase.MSSQL_Connection_Static import MSSQLConnection
 import dbconfig
 
 class DoctorDao:
-    def queryalldoctors(self):
+    def queryalldoctors(self) -> list[BacSi.BacSi]:
         """Return list of doctors"""
         doctors = []
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 
+            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver,
                                                                  dbconfig.server, 
                                                                  dbconfig.database, 
                                                                  dbconfig.username, 
@@ -32,7 +32,7 @@ class DoctorDao:
         """Delete by id"""
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 
+            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver, 
                                                                  dbconfig.server, 
                                                                  dbconfig.database, 
                                                                  dbconfig.username, 
@@ -51,7 +51,7 @@ class DoctorDao:
     def update(self, bs):
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 
+            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver, 
                                                                  dbconfig.server, 
                                                                  dbconfig.database, 
                                                                  dbconfig.username, 
@@ -72,7 +72,7 @@ class DoctorDao:
     def insert(self, bs):
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect('SQL Server', 
+            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver, 
                                                                  dbconfig.server, 
                                                                  dbconfig.database, 
                                                                  dbconfig.username, 

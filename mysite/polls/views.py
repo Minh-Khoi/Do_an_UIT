@@ -25,6 +25,12 @@ def index(request):
 def home(request):
     return render(request, CONST_ROOT.ROOT + '/mysite/templates_html/index.html')
 
+# Function này mình viết để thực hiện chức năng chỉnh sửa thông tin bệnh nhân
+def home_(request, idbn : str):
+    context = {
+        "IDBN" : {"x1":idbn}
+    }
+    return render(request, CONST_ROOT.ROOT + '/mysite/templates_html/index.html', context=context)
 
 def don_vi(request):
     return render(request, CONST_ROOT.ROOT + '/mysite/templates_html/don_vi.html')
@@ -155,3 +161,58 @@ def delete_sieuam(request):
         return HttpResponse('Delete successfully!')
     except Exception as e:
         return HttpResponse(f'Error: {str(e)}')
+
+
+def query_thongke(request):
+    # Query all data from tb_BenhNhan and tb_SieuAm!!
+    
+    # THen add to a json-string like format https://ideone.com/FzYfwN
+    
+    pass
+
+
+def query_ds_bacsi(request):
+    # Query all data from tb_BacSi
+    tb_BacSi_list = DoctorDao().queryalldoctors()
+    # chuyển về dạng json
+    tb_dict_Bacsi_list = []
+    for bacsi in tb_BacSi_list:
+        dict_bacsi= {
+            "ID" : bacsi.getid(),
+            "HoTenBacSi" : bacsi.gethoten(),
+            "HinhChuKy" : ""
+        }
+        tb_dict_Bacsi_list.append(dict_bacsi)
+    json_string = json.dumps(tb_dict_Bacsi_list)
+    # Then add to a json-string like format https://ideone.com/lprHqn
+    return HttpResponse(json_string)
+    pass
+
+
+def query_ds_mausieuam(request):
+    # Query all data from tb_MauSieuAm
+    tb_mausieuam_list = UltrasoundExaminationDao().queryall()
+    # chuyển về dạng json
+    tb_dict_mausieuam_list = []
+    for mausieuam in tb_mausieuam_list:
+        dict_mausieuam = {
+            "ID": mausieuam.getid(),
+            "STT": mausieuam.getstt(),
+            "TenMau": mausieuam.gettenmau(),
+            "TieuDe": mausieuam.gettieude(),
+            "GioiTinh": mausieuam.getgioitinh(),
+            "ChuaSuDung": mausieuam.getchuasudung(),
+            "ChanDoan": mausieuam.getchuandoan(),
+            "SoHinhInToiDa": mausieuam.getsohinhtoida(),
+            "SoPhanMoTa": mausieuam.getsophanmota(),
+            "KieuIn": mausieuam.getkieuin(),
+            "NoiDung1": mausieuam.getnoidung1(),
+            "NoiDung2": mausieuam.getnoidung2(),
+            "KetLuan": mausieuam.getketluan(),
+            "DeNghi": mausieuam.getdenghi()
+        }
+        tb_dict_mausieuam_list.append(dict_mausieuam)
+    json_string = json.dumps(tb_dict_mausieuam_list)
+    # Then add to a json-string like format https://ideone.com/UdF18P
+    return HttpResponse(json_string)
+    pass
