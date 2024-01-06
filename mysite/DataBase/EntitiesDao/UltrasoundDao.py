@@ -2,15 +2,16 @@ from DataBase.Entities import SieuAm
 from DataBase.MSSQL_Connection_Static import MSSQLConnection
 import dbconfig
 
+
 class UltrasoundDao:
     def delete(self, id):
         """Delete by id"""
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver, 
-                                                                 dbconfig.server, 
-                                                                 dbconfig.database, 
-                                                                 dbconfig.username, 
+            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver,
+                                                                 dbconfig.server,
+                                                                 dbconfig.database,
+                                                                 dbconfig.username,
                                                                  dbconfig.password)
             cursor = connection.cursor()
 
@@ -27,10 +28,10 @@ class UltrasoundDao:
     def insert(self, sieuam):
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver, 
-                                                                 dbconfig.server, 
-                                                                 dbconfig.database, 
-                                                                 dbconfig.username, 
+            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver,
+                                                                 dbconfig.server,
+                                                                 dbconfig.database,
+                                                                 dbconfig.username,
                                                                  dbconfig.password)
             cursor = connection.cursor()
             # Execute custom query
@@ -63,10 +64,10 @@ class UltrasoundDao:
     def update(self, sieuam):
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver, 
-                                                                 dbconfig.server, 
-                                                                 dbconfig.database, 
-                                                                 dbconfig.username, 
+            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver,
+                                                                 dbconfig.server,
+                                                                 dbconfig.database,
+                                                                 dbconfig.username,
                                                                  dbconfig.password)
             cursor = connection.cursor()
             # Execute custom query
@@ -102,14 +103,14 @@ class UltrasoundDao:
         ultrasound = []
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver, 
-                                                                 dbconfig.server, 
-                                                                 dbconfig.database, 
-                                                                 dbconfig.username, 
+            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver,
+                                                                 dbconfig.server,
+                                                                 dbconfig.database,
+                                                                 dbconfig.username,
                                                                  dbconfig.password)
             cursor = connection.cursor()
             # Execute custom query
-            sql = "select * from tb_MauSieuAm"
+            sql = "select * from tb_SieuAm"
             cursor.execute(sql)
             rows = cursor.fetchall()
             for row in rows:
@@ -120,6 +121,33 @@ class UltrasoundDao:
         except Exception as e:
             print(e)
         finally:
+            MSSQLConnection.MSSQLConnection.close_connection()
+            return ultrasound
+
+    def querybyid(self, idbn):
+        """Return list of patients"""
+        ultrasound = None
+        try:
+            # Create connection
+            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver,
+                                                                 dbconfig.server,
+                                                                 dbconfig.database,
+                                                                 dbconfig.username,
+                                                                 dbconfig.password)
+            cursor = connection.cursor()
+            # Execute custom query
+            sql = "select * from tb_SieuAm where IDBenhNhan='" + idbn + "'"
+            cursor.execute(sql)
+            row = cursor.fetchone()
+            if row:
+                ultrasound = SieuAm.SieuAm(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8],
+                                           row[9],
+                                           row[10], row[11], row[12], row[13])
+
+        except Exception as e:
+            print(e)
+        finally:
+            # Close connection
             MSSQLConnection.MSSQLConnection.close_connection()
             return ultrasound
 

@@ -13,9 +13,8 @@ function before() {
             let datas = response;
             var jsonString = JSON.stringify(datas);
             $("span.screenDatas").html(jsonString)
-            alert($("span.screenDatas").html())
+            //alert($("span.screenDatas").html())
             populateTable();
-            //console.log($("span.screenDatas").html())
             debugger;
             // addOptionsIntoSelect("select#loaisieuam", valuesArray);
         },

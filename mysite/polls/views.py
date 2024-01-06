@@ -15,10 +15,10 @@ from django.http import HttpResponse, HttpRequest
 
 
 def index(request):
-    # mausa = MauSieuAm(77, 101, "Mau A", "Sieu Am Bung", "Nam", 0, "Chua co", 5, 3, "2D",
-    #                   "Nen ghi chu y", "Khong co", "Binh thuong", "Can lam them cac xet nghiem khac")
+    mausa = MauSieuAm(77, 101, "Mau A", "Sieu Am Bung", "Nam", 0, "Chua co", 5, 3, "2D",
+                      "Nen ghi chu y", "Khong co", "Binh thuong", "Can lam them cac xet nghiem khac")
 
-    # UltrasoundExaminationDao().insert(mausieuam=mausa)
+    UltrasoundExaminationDao().insert(mausieuam=mausa)
     return HttpResponse("Hello, world. You're at the polls index. 55555")
 
 
@@ -28,8 +28,15 @@ def home(request):
 
 # Function này mình viết để thực hiện chức năng chỉnh sửa thông tin bệnh nhân
 def home_(request, idbn: str):
+    benhnhan = PatientsDao().querybyid(idbn)
+    sieuam = UltrasoundDao().querybyid(idbn)
     context = {
-        "IDBN": {"x1": idbn}
+        "tb_BenhNhan": [
+            vars(benhnhan)
+        ],
+        "tb_SieuAm": [
+            vars(sieuam)
+        ]
     }
     return render(request, CONST_ROOT.ROOT + '/mysite/templates_html/index.html', context=context)
 
@@ -108,7 +115,7 @@ def save_bacsi(request):
         dd = DoctorDao()
         dd.insert(bs)
 
-        return HttpResponse('["Data saved successfully!"]')
+        return HttpResponse('Data saved successfully!')
     except Exception as e:
         return HttpResponse(f'Error: {str(e)}')
 

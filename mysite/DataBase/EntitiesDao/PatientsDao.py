@@ -9,10 +9,10 @@ class PatientsDao:
         patients = []
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver, 
-                                                                 dbconfig.server, 
-                                                                 dbconfig.database, 
-                                                                 dbconfig.username, 
+            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver,
+                                                                 dbconfig.server,
+                                                                 dbconfig.database,
+                                                                 dbconfig.username,
                                                                  dbconfig.password)
             cursor = connection.cursor()
             # Execute custom query
@@ -29,13 +29,39 @@ class PatientsDao:
             MSSQLConnection.MSSQLConnection.close_connection()
             return patients
 
+    def querybyid(self, id):
+        benhnhan = None
+        """Return a patient by id"""
+        # patients = []
+        try:
+            # Create connection
+            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver,
+                                                                 dbconfig.server,
+                                                                 dbconfig.database,
+                                                                 dbconfig.username,
+                                                                 dbconfig.password)
+            cursor = connection.cursor()
+            # Execute custom query
+            sql = "select * from tb_BenhNhan where id=" + id
+            cursor.execute(sql)
+            row = cursor.fetchone()
+            if row:
+                benhnhan = BenhNhan.BenhNhan(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8])
+            # Close connection
+        except Exception as e:
+            print(e)
+        finally:
+            # Close connection
+            MSSQLConnection.MSSQLConnection.close_connection()
+            return benhnhan
+
     def insert(self, bn):
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver, 
-                                                                 dbconfig.server, 
-                                                                 dbconfig.database, 
-                                                                 dbconfig.username, 
+            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver,
+                                                                 dbconfig.server,
+                                                                 dbconfig.database,
+                                                                 dbconfig.username,
                                                                  dbconfig.password)
             cursor = connection.cursor()
             # Execute custom query
@@ -60,10 +86,10 @@ class PatientsDao:
     def update(self, bn):
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver, 
-                                                                 dbconfig.server, 
-                                                                 dbconfig.database, 
-                                                                 dbconfig.username, 
+            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver,
+                                                                 dbconfig.server,
+                                                                 dbconfig.database,
+                                                                 dbconfig.username,
                                                                  dbconfig.password)
             cursor = connection.cursor()
             # Execute custom query
@@ -91,10 +117,10 @@ class PatientsDao:
         """Delete by id"""
         try:
             # Create connection
-            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver, 
-                                                                 dbconfig.server, 
-                                                                 dbconfig.database, 
-                                                                 dbconfig.username, 
+            connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver,
+                                                                 dbconfig.server,
+                                                                 dbconfig.database,
+                                                                 dbconfig.username,
                                                                  dbconfig.password)
             cursor = connection.cursor()
 

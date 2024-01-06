@@ -50,7 +50,7 @@
         }
         ]
         } -->
-        
+
 
     </span>
     <div>
@@ -176,18 +176,16 @@
 <script src="{% static 'sendAjax.js' %}"></script>
 <script src="{% static 'thong_tin_hc/init.js' %}"></script>
 <script src="{% static 'thong_tin_hc/tableClick.js' %}"></script>
-<script>
+<!-- <script>
     window.onload = () => {
         queryDatas();
     }
-</script>
+</script> -->
 
 <script>
     $(document).ready(function () {
-        // var x = $("span.screenDatas").html()
-        // alert(x)
-        before()
-
+        before();
+        queryDatas();
     });
 
 </script>
