@@ -10,45 +10,49 @@
     <link rel="stylesheet" href="{% static 'thong_tin_hc/style.css' %}">
     <!-- <link rel="stylesheet" href="style.css"> -->
     <!-- jquery cdn -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js" 
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
         integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-    
+
 </head>
 
 <body>
-    <span class="screenDatas" style="display: none;">{
-    "tb_BenhNhan": [
+    <span class="screenDatas" style="display: none;">
+        <!-- {
+        "tb_BenhNhan": [
         {
-            "ID": "",
-            "IDBenhNhan": "650678",
-            "HoTenBenhNhan": "asd fdsfdf",
-            "GioiTinh": "nam",
-            "NamSinh": "2023-11-29",
-            "DiaChi": null,
-            "SDT": "2054065056",
-            "BHYT": "55556666",
-            "Del": "N/A"
+        "ID": "",
+        "IDBenhNhan": "650678",
+        "HoTenBenhNhan": "Danh Tran Cong",
+        "GioiTinh": "nam",
+        "NamSinh": "2023-11-29",
+        "DiaChi": null,
+        "SDT": "2054065056",
+        "BHYT": "55556666",
+        "Del": "N/A"
         }
-    ],
-    "tb_SieuAm": [
+        ],
+        "tb_SieuAm": [
         {
-            "ID": "",
-            "Ngay": "2023-12-28",
-            "SoPhieu": "650678",
-            "IDBenhNhan": "650678",
-            "TenBenhNhan": "asd fdsfdf",
-            "TenBacSiSieuAm": null,
-            "TenBacSiChiDinh": null,
-            "MauSieuAm": null,
-            "ChanDoan": "a sdfdsafdsa",
-            "NoiDung1": "\n                    \n                        Heello\n                        world\n                        !!! asdfds\n                    \n                ",
-            "NoiDung2": "",
-            "KetLuan": " asdfadsf dsfds",
-            "DeNghi": " asdfadsfrger",
-            "Khoa": "nhi"
+        "ID": "",
+        "Ngay": "2023-12-28",
+        "SoPhieu": "650678",
+        "IDBenhNhan": "650678",
+        "TenBenhNhan": "Danh Tran Cong",
+        "TenBacSiSieuAm": null,
+        "TenBacSiChiDinh": null,
+        "MauSieuAm": null,
+        "ChanDoan": "a sdfdsafdsa",
+        "NoiDung1": "\n \n Heello\n world\n !!! asdfds\n \n ",
+        "NoiDung2": "",
+        "KetLuan": " asdfadsf dsfds",
+        "DeNghi": " asdfadsfrger",
+        "Khoa": "nhi"
         }
-    ]
-}</span>
+        ]
+        } -->
+        
+
+    </span>
     <div>
         <h3>Thông Tin Hành Chính</h3>
         <form action="">
@@ -122,7 +126,7 @@
                 <tr>
                     <td colspan="2">
                         <label for="chuandoan">Chuẩn đoán: </label>
-                        <input type="text" name="chuandoan" style="width: 79%;"  id="chuandoan">
+                        <input type="text" name="chuandoan" style="width: 79%;" id="chuandoan">
                     </td>
                     <td colspan="2" style="padding-left: 45px;">
                         <input type="button" name="updateDetails" value="Chi tiết" id="updateDetails">
@@ -136,7 +140,7 @@
         <h3>Danh Sách Thống Kê</h3>
         <table class="danh_sach_thong_ke">
             <tr class="top_row">
-                <th></th>
+                <th>STT</th>
                 <th>Chọn</th>
                 <th>ID</th>
                 <th>Ngày</th>
@@ -147,7 +151,7 @@
             </tr>
             <tr style="display: none;" onclick="tableClick(event)">
                 <td></td>
-                <td><input type="checkbox" ></td>
+                <td><input type="checkbox"></td>
                 <td>Default</td>
                 <td>Default</td>
                 <td>Default</td>
@@ -155,7 +159,7 @@
                 <td>Default</td>
                 <td>Default</td>
             </tr>
-<!-- 
+            <!-- 
             <tr>
                 <td></td>
                 <td><input type="checkbox"></td>
@@ -177,4 +181,15 @@
         queryDatas();
     }
 </script>
+
+<script>
+    $(document).ready(function () {
+        // var x = $("span.screenDatas").html()
+        // alert(x)
+        before()
+
+    });
+
+</script>
+
 </html>

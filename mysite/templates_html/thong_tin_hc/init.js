@@ -3,17 +3,42 @@
  * then populate it to the element "span.screenDatas"
  * The function populateTable() will be invoked in the 'success' 's arrow function of the AJAX processing
  */
+function before() {
+    $.ajax({
+        type: "GET",
+        url: "http://localhost:8000/polls/query_thongke",
+        data: "data",
+        dataType: "json",
+        success: function (response) {
+            let datas = response;
+            var jsonString = JSON.stringify(datas);
+            $("span.screenDatas").html(jsonString)
+            alert($("span.screenDatas").html())
+            populateTable();
+            //console.log($("span.screenDatas").html())
+            debugger;
+            // addOptionsIntoSelect("select#loaisieuam", valuesArray);
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            // Handle error
+            console.error("AJAX error:", textStatus, errorThrown);
+        }
+    });
+}
+
 function queryDatas() {
+
     load_bacsi_and_mausieuam();
     // waiting
     console.log("datas query called");
-    // populateTable();
+    //populateTable();
 }
 
 /**
  * pick content of "span.screenDatas", then parse to Json object and return
  */
 function getJsonAndParse() {
+    //let screenStrDatas = $("span.screenDatas").html();
     let screenStrDatas = $("span.screenDatas").html();
     return JSON.parse(screenStrDatas);
 }
@@ -21,11 +46,12 @@ function getJsonAndParse() {
 function populateTable() {
     let jsonObj = getJsonAndParse();
     let numOfBenhNhan = jsonObj.tb_BenhNhan.length;
-    for (let i = 0; i < numOfBenhNhan; i++){
-        console.log(jsonObj.tb_BenhNhanơi);
+
+    for (let i = 0; i < numOfBenhNhan; i++) {
+        console.log(jsonObj.tb_BenhNhan);
         let table_tr_DOM_cloned = $("table.danh_sach_thong_ke  tr:not(.top_row)").first().clone();
         $(table_tr_DOM_cloned).css("display", "");
-        $(table_tr_DOM_cloned).find("td:nth-child(2)").find("input").attr("id", "chon_"+i);
+        $(table_tr_DOM_cloned).find("td:nth-child(2)").find("input").attr("id", "chon_" + i);
         $(table_tr_DOM_cloned).find("td:nth-child(3)").html(jsonObj.tb_BenhNhan[i].ID);
         $(table_tr_DOM_cloned).find("td:nth-child(4)").html(jsonObj.tb_SieuAm[i].Ngay);
         $(table_tr_DOM_cloned).find("td:nth-child(5)").html("");
@@ -34,25 +60,28 @@ function populateTable() {
         $(table_tr_DOM_cloned).find("td:nth-child(8)").html(jsonObj.tb_BenhNhan[i].GioiTinh);
         $("table.danh_sach_thong_ke ").append(table_tr_DOM_cloned);
     }
+
+
+
 }
 
 function load_bacsi_and_mausieuam() {
-    
+
     $.ajax({
         type: "GET",
-        url: "http://localhost:8000/polls/query_ds_mausieuam", 
+        url: "http://localhost:8000/polls/query_ds_mausieuam",
         data: "data",
         dataType: "json",
         success: function (response) {
             let datas = response;
-            console.log(datas);
+            console.log(typeof (datas));
             let valuesArray = datas.map(element => {
                 return { "ID": element.ID, "TenMau": element.TenMau };
             });
             debugger;
             addOptionsIntoSelect("select#loaisieuam", valuesArray);
         },
-        error: function(jqXHR, textStatus, errorThrown) {
+        error: function (jqXHR, textStatus, errorThrown) {
             // Handle error
             console.error("AJAX error:", textStatus, errorThrown);
         }
@@ -60,21 +89,24 @@ function load_bacsi_and_mausieuam() {
 
     $.ajax({
         type: "GET",
-        url: "http://localhost:8000/polls/query_ds_bacsi", 
+        url: "http://localhost:8000/polls/query_ds_bacsi",
         data: "data",
         dataType: "json",
         success: function (response) {
             let datas = response;
+            console.log(datas);
             let valuesArray = datas.map(element => {
                 return { "ID": element.ID, "HoTenBacSi": element.HoTenBacSi };
             });
             addOptionsIntoSelect("select#bacsi", valuesArray);
         }
     });
+
+
 }
 
 function addOptionsIntoSelect(domSelector, valuesArray) {
-    for (let i = 0; i < valuesArray.length; i++){
+    for (let i = 0; i < valuesArray.length; i++) {
         let optionDOM = document.createElement("option");
         optionDOM.value = valuesArray[i].ID;
         optionDOM.innerHTML = valuesArray[i].TenMau;
