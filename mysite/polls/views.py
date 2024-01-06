@@ -15,10 +15,10 @@ from django.http import HttpResponse, HttpRequest
 
 
 def index(request):
-    mausa = MauSieuAm(77, 101, "Mau A", "Sieu Am Bung", "Nam", 0, "Chua co", 5, 3, "2D",
-                      "Nen ghi chu y", "Khong co", "Binh thuong", "Can lam them cac xet nghiem khac")
+    # mausa = MauSieuAm(77, 101, "Mau A", "Sieu Am Bung", "Nam", 0, "Chua co", 5, 3, "2D",
+    #                   "Nen ghi chu y", "Khong co", "Binh thuong", "Can lam them cac xet nghiem khac")
 
-    UltrasoundExaminationDao().insert(mausieuam=mausa)
+    # UltrasoundExaminationDao().insert(mausieuam=mausa)
     return HttpResponse("Hello, world. You're at the polls index. 55555")
 
 
@@ -108,7 +108,7 @@ def save_bacsi(request):
         dd = DoctorDao()
         dd.insert(bs)
 
-        return HttpResponse('Data saved successfully!')
+        return HttpResponse('["Data saved successfully!"]')
     except Exception as e:
         return HttpResponse(f'Error: {str(e)}')
 

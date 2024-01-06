@@ -47,9 +47,12 @@
                         <label for="ten_bs">Tên bác sĩ</label>
                         <input type="text" name="ten_bs" id="ten_bs"  />
                         <br/>
-                        <button type="button" class="tao_moi">Tạo mới</button>
-                        <button type="button" class="luu_ten">Lưu tên</button>
-                        <button type="button" class="xoa_ten">Xóa</button>
+                        <button type="button" class="tao_moi" 
+                                data-action="create" onclick="doSubmit(event)">Tạo mới</button>
+                        <button type="button" class="luu_ten" 
+                                data-action="update" onclick="doSubmit(event)">Lưu tên</button>
+                        <button type="button" class="xoa_ten" 
+                                data-action="delete" onclick="doSubmit(event)">Xóa</button>
                         <div style="clear: both;"></div>
                     </div>
                     <!-- <div class="chuky display_triggered" data-displayed="true" data-display-trigger="bac_si">
@@ -60,9 +63,12 @@
                 </div>
                 <div class="table_item" contenteditable="true">
                     <table class="tb_ds_bac_si display_triggered" data-display-trigger="bac_si"
-                            data-displayed="true">
+                            data-displayed="true" >
                         <thead>
                             <tr>
+                                <th>
+                                    <button type="button" onclick="clearSelection()">Clear selection</button>
+                                </th>
                                 <th>&nbsp; ID&nbsp;</th>
                                 <th>&nbsp;Họ tên bác sĩ&nbsp;</th>
                                 <th>&nbsp;Hình chữ ký&nbsp;</th>
@@ -82,5 +88,14 @@
 </body>
 
 <script src="{% static 'don_vi/right_col/triggerTab.js' %}"></script>
-<script src="{% static 'don_vi/right_col/displayImg.js' %}"></script>
+<!-- <script src="{% static 'don_vi/right_col/displayImg.js' %}"></script> -->
+<script src="{% static 'don_vi/tableAction.js' %}"></script>
+<script src="{% static 'don_vi/query.js' %}"></script>
+<script src="{% static 'sendAjax.js' %}"></script>
+<script src="{% static 'don_vi/submit.js' %}"></script>
+<script>
+    $(document).ready(function () {
+        loadBacsiTable();
+    });
+</script>
 </html>
