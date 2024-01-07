@@ -16,6 +16,7 @@ urlpatterns = [
     path('save_bacsi', views.save_bacsi, name='save_bacsi'),
     path('update_bacsi', views.update_bacsi, name='save_bacsi'),
     path('delete_bacsi', views.delete_bacsi, name='delete_bacsi'),
+    path('delete_benhnhan', views.delete_benhnhan, name='delete_benhnhan'),
     path('delete_sieuam', views.delete_sieuam, name='delete_sieuam'),
 
     

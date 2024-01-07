@@ -155,6 +155,19 @@ def delete_bacsi(request):
     except Exception as e:
         return HttpResponse(f'Error: {str(e)}')
 
+def delete_benhnhan(request):
+    try:
+        request_body = request.body
+        datas = json.loads(request_body)
+
+        benhnhan_data = datas.get('tb_BenhNhan', [])[0]
+        ID_BenhNhan = benhnhan_data.get('ID')
+        #print(ID_BenhNhan)
+        PatientsDao().delete(ID_BenhNhan)
+        return HttpResponse('Delete successfully!')
+    except Exception as e:
+        return HttpResponse(f'Error: {str(e)}')
+
 
 def delete_sieuam(request):
     try:
