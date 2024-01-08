@@ -29,13 +29,39 @@ def home(request):
 # Function này mình viết để thực hiện chức năng chỉnh sửa thông tin bệnh nhân
 def home_(request, idbn: str):
     benhnhan = PatientsDao().querybyid(idbn)
-    sieuam = UltrasoundDao().querybyid(idbn)
+    sieuam = UltrasoundDao().querybyid(benhnhan.getidbenhnhan())
     context = {
         "tb_BenhNhan": [
-            vars(benhnhan)
+            {
+                "ID": benhnhan.getid(),
+                "IDBenhNhan": benhnhan.getidbenhnhan(),
+                "HoTenBenhNhan": benhnhan.gethotenbenhnhan(),
+                "GioiTinh": benhnhan.getgioitinh(),
+                "NamSinh": benhnhan.getnamsinh(),
+                "DiaChi": benhnhan.getdiachi(),
+                "SDT": benhnhan.getsdt(),
+                "BHYT": benhnhan.getbhyt(),
+                "Del": benhnhan.getdel()
+            }
         ],
         "tb_SieuAm": [
-            vars(sieuam)
+            {
+                "ID": sieuam.getid(),
+                "Ngay": sieuam.getngay(),
+                "SoPhieu": sieuam.getsophieu(),
+                "IDBenhNhan": sieuam.getidbenhnhan(),
+                "TenBenhNhan": sieuam.gettenbenhnhan(),
+                "TenBacSiSieuAm": sieuam.gettenbacsisieuam(),
+                "TenBacSiChiDinh": sieuam.gettenbacsichidinh(),
+                "MauSieuAm": sieuam.getmausieuam(),
+                "ChanDoan": sieuam.getchuandoan(),
+                "NoiDung1": sieuam.getnoidung1(),
+                "NoiDung2": sieuam.getnoidung2(),
+                "KetLuan": sieuam.getketluan(),
+                "DeNghi": sieuam.getdenghi(),
+                "Khoa": sieuam.getkhoa()
+            } 
+            if sieuam is not None else ""
         ]
     }
     return render(request, CONST_ROOT.ROOT + '/mysite/templates_html/index.html', context=context)

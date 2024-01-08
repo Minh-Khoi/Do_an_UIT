@@ -9,6 +9,8 @@ function loadBacsiTable() {
             addRowToTable(datas);
         }
     });
+    setTimeout(() => { }, 1000);
+
 }
 
 function addRowToTable(datas) {

@@ -2,7 +2,7 @@ class SieuAm:
     def __init__(self, id, ngay, sophieu, idbenhnhan, tenbenhnhan, tenbacsisieuam, tenbacsichidinh, mausieuam,
                  chuandoan, noidung1, noidung2, ketluan, denghi, khoa):
         self.__id = id
-        self.__ngay = ngay
+        self.__ngay = str(ngay)
         self.__sophieu = sophieu
         self.__idbenhnhan = idbenhnhan
         self.__tenbenhnhan = tenbenhnhan

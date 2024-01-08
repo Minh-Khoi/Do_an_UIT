@@ -36,7 +36,9 @@ class UltrasoundExaminationDao:
         except Exception as e:
             print(e)
         finally:
-            MSSQLConnection.MSSQLConnection.close_connection()
+            # MSSQLConnection.MSSQLConnection.close_connection()
+            cursor.close()
+            connection.close()
 
     def update(self, mausieuam):
         try:
@@ -73,7 +75,9 @@ class UltrasoundExaminationDao:
         except Exception as e:
             print(e)
         finally:
-            MSSQLConnection.MSSQLConnection.close_connection()
+            # MSSQLConnection.MSSQLConnection.close_connection()
+            cursor.close()
+            connection.close()
 
     def delete(self, id):
         """Delete by id"""
@@ -94,7 +98,9 @@ class UltrasoundExaminationDao:
         except Exception as e:
             print(e)
         finally:
-            MSSQLConnection.MSSQLConnection.close_connection()
+            # MSSQLConnection.MSSQLConnection.close_connection()
+            cursor.close()
+            connection.close()
 
     def queryall(self) -> list[MauSieuAm.MauSieuAm]:
         """Return list of patients"""
@@ -109,24 +115,26 @@ class UltrasoundExaminationDao:
             cursor = connection.cursor()
             # Execute custom query
             sql = "select * from tb_MauSieuAm"
-            cursor.execute(sql)
-            rows = cursor.fetchall()
+            # cursor.execute(sql)
+            rows = cursor.execute(sql).fetchall()
             for row in rows:
                 ue = MauSieuAm.MauSieuAm(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9],
                                          row[10], row[11], row[12], row[13])
                 ultrasoundexaminations.append(ue)
-            # Close connection
         except Exception as e:
             print(e)
         finally:
-            MSSQLConnection.MSSQLConnection.close_connection()
+            # Close connection
+            # MSSQLConnection.MSSQLConnection.close_connection()
+            cursor.close()
+            connection.close()
             return ultrasoundexaminations
 
 
-if __name__ == '__main__':
-    ued = UltrasoundExaminationDao()
-    mausieuam1 = MauSieuAm.MauSieuAm(77, 101, "Mau A", "Sieu Am Bung", "Nam", 0, "Chua co", 5, 3, "2D",
-                                     "Nen ghi chu y", "Khong co", "Binh thuong", "Can lam them cac xet nghiem khac")
+# if __name__ == '__main__':
+#     ued = UltrasoundExaminationDao()
+#     mausieuam1 = MauSieuAm.MauSieuAm(77, 101, "Mau A", "Sieu Am Bung", "Nam", 0, "Chua co", 5, 3, "2D",
+#                                      "Nen ghi chu y", "Khong co", "Binh thuong", "Can lam them cac xet nghiem khac")
 
-    for msa in ued.queryall():
-        print(msa)
+#     for msa in ued.queryall():
+#         print(msa)

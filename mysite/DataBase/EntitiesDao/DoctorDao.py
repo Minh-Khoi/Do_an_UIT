@@ -16,16 +16,18 @@ class DoctorDao:
             cursor = connection.cursor()
             # Execute custom query
             sql = "select * from tb_BacSi"
-            cursor.execute(sql)
-            rows = cursor.fetchall()
+            # cursor.execute(sql)
+            rows = cursor.execute(sql).fetchall()
             for row in rows:
                 bs = BacSi.BacSi(row[0], row[1], row[2])
                 doctors.append(bs)
-            # Close connection
         except Exception as e:
             print(e)
         finally:
-            MSSQLConnection.MSSQLConnection.close_connection()
+            # Close connection
+            # MSSQLConnection.MSSQLConnection.close_connection()
+            cursor.close()
+            connection.close()
             return doctors
 
     def delete(self, id):
@@ -46,8 +48,10 @@ class DoctorDao:
         except Exception as e:
             print(e)
         finally:
-            MSSQLConnection.MSSQLConnection.close_connection()
-
+            # MSSQLConnection.MSSQLConnection.close_connection()
+            cursor.close()
+            connection.close()
+            
     def update(self, bs):
         try:
             # Create connection
@@ -67,8 +71,10 @@ class DoctorDao:
         except Exception as e:
             print(e)
         finally:
-            MSSQLConnection.MSSQLConnection.close_connection()
-
+            # MSSQLConnection.MSSQLConnection.close_connection()
+            cursor.close()
+            connection.close()
+            
     def insert(self, bs):
         try:
             # Create connection
@@ -86,14 +92,16 @@ class DoctorDao:
         except Exception as e:
             print(e)
         finally:
-            MSSQLConnection.MSSQLConnection.close_connection()
+            # MSSQLConnection.MSSQLConnection.close_connection()
+            cursor.close()
+            connection.close()
+            
 
+# if __name__ == '__main__':
+#     doctordao = DoctorDao()
 
-if __name__ == '__main__':
-    doctordao = DoctorDao()
-
-    # doctordao.delete(20)
-    drdanh = BacSi.BacSi("3042", "Danh", "DanhTC")
-    doctordao.insert(drdanh)
-    for bs in doctordao.queryalldoctors():
-        print(bs)
+#     # doctordao.delete(20)
+#     drdanh = BacSi.BacSi("3042", "Danh", "DanhTC")
+#     doctordao.insert(drdanh)
+#     for bs in doctordao.queryalldoctors():
+#         print(bs)

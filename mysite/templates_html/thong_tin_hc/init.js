@@ -12,17 +12,15 @@ function before() {
         success: function (response) {
             let datas = response;
             var jsonString = JSON.stringify(datas);
-            $("span.screenDatas").html(jsonString)
-            //alert($("span.screenDatas").html())
+            $("span.screenDatas").html(jsonString);
             populateTable();
-            debugger;
-            // addOptionsIntoSelect("select#loaisieuam", valuesArray);
         },
         error: function (jqXHR, textStatus, errorThrown) {
             // Handle error
             console.error("AJAX error:", textStatus, errorThrown);
         }
     });
+    setTimeout(() => { }, 1000);
 }
 
 function queryDatas() {
@@ -45,7 +43,6 @@ function getJsonAndParse() {
 function populateTable() {
     let jsonObj = getJsonAndParse();
     let numOfBenhNhan = jsonObj.tb_BenhNhan.length;
-
     for (let i = 0; i < numOfBenhNhan; i++) {
         console.log(jsonObj.tb_BenhNhan);
         let table_tr_DOM_cloned = $("table.danh_sach_thong_ke  tr:not(.top_row)").first().clone();
@@ -65,7 +62,6 @@ function populateTable() {
 }
 
 function load_bacsi_and_mausieuam() {
-
     $.ajax({
         type: "GET",
         url: "http://localhost:8000/polls/query_ds_mausieuam",
@@ -75,9 +71,8 @@ function load_bacsi_and_mausieuam() {
             let datas = response;
             console.log(typeof (datas));
             let valuesArray = datas.map(element => {
-                return { "ID": element.ID, "TenMau": element.TenMau };
+                return { "ID": element.ID, "HTML": element.TenMau };
             });
-            debugger;
             addOptionsIntoSelect("select#loaisieuam", valuesArray);
         },
         error: function (jqXHR, textStatus, errorThrown) {
@@ -85,7 +80,7 @@ function load_bacsi_and_mausieuam() {
             console.error("AJAX error:", textStatus, errorThrown);
         }
     });
-
+    setTimeout(() => { }, 1000);
     $.ajax({
         type: "GET",
         url: "http://localhost:8000/polls/query_ds_bacsi",
@@ -95,20 +90,19 @@ function load_bacsi_and_mausieuam() {
             let datas = response;
             console.log(datas);
             let valuesArray = datas.map(element => {
-                return { "ID": element.ID, "HoTenBacSi": element.HoTenBacSi };
+                return { "ID": element.ID, "HTML": element.HoTenBacSi };
             });
             addOptionsIntoSelect("select#bacsi", valuesArray);
         }
     });
-
-
+    setTimeout(() => { }, 1000);
 }
 
 function addOptionsIntoSelect(domSelector, valuesArray) {
     for (let i = 0; i < valuesArray.length; i++) {
         let optionDOM = document.createElement("option");
         optionDOM.value = valuesArray[i].ID;
-        optionDOM.innerHTML = valuesArray[i].TenMau;
+        optionDOM.innerHTML = valuesArray[i].HTML;
         $(domSelector).append(optionDOM);
     }
 }

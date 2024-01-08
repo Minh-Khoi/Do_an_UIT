@@ -23,7 +23,9 @@ class UltrasoundDao:
         except Exception as e:
             print(e)
         finally:
-            MSSQLConnection.MSSQLConnection.close_connection()
+            # MSSQLConnection.MSSQLConnection.close_connection()
+            cursor.close()
+            connection.close()
 
     def insert(self, sieuam):
         try:
@@ -59,7 +61,9 @@ class UltrasoundDao:
         except Exception as e:
             print(e)
         finally:
-            MSSQLConnection.MSSQLConnection.close_connection()
+            # MSSQLConnection.MSSQLConnection.close_connection()
+            cursor.close()
+            connection.close()
 
     def update(self, sieuam):
         try:
@@ -96,7 +100,9 @@ class UltrasoundDao:
         except Exception as e:
             print(e)
         finally:
-            MSSQLConnection.MSSQLConnection.close_connection()
+            # MSSQLConnection.MSSQLConnection.close_connection()
+            cursor.close()
+            connection.close()
 
     def queryall(self):
         """Return list of patients"""
@@ -111,17 +117,19 @@ class UltrasoundDao:
             cursor = connection.cursor()
             # Execute custom query
             sql = "select * from tb_SieuAm"
-            cursor.execute(sql)
-            rows = cursor.fetchall()
+            # cursor.execute(sql)
+            rows = cursor.execute(sql).fetchall()
             for row in rows:
                 ue = SieuAm.SieuAm(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8], row[9],
                                    row[10], row[11], row[12], row[13])
                 ultrasound.append(ue)
-            # Close connection
         except Exception as e:
             print(e)
         finally:
-            MSSQLConnection.MSSQLConnection.close_connection()
+            # Close connection
+            # MSSQLConnection.MSSQLConnection.close_connection()
+            cursor.close()
+            connection.close()
             return ultrasound
 
     def querybyid(self, idbn):
@@ -148,15 +156,17 @@ class UltrasoundDao:
             print(e)
         finally:
             # Close connection
-            MSSQLConnection.MSSQLConnection.close_connection()
+            # MSSQLConnection.MSSQLConnection.close_connection()
+            cursor.close()
+            connection.close()
             return ultrasound
 
 
-if __name__ == '__main__':
-    ud = UltrasoundDao()
-    sa = SieuAm.SieuAm(116, "2023-01-01", "ABC123", "BN001", "John Doe",
-                       "Dr. Smith", "Dr Danh", "Mau A", "Some diagnosis", "Details 1", "Details 2", "Normal",
-                       "Follow-up", "Radiology")
+# if __name__ == '__main__':
+#     ud = UltrasoundDao()
+#     sa = SieuAm.SieuAm(116, "2023-01-01", "ABC123", "BN001", "John Doe",
+#                        "Dr. Smith", "Dr Danh", "Mau A", "Some diagnosis", "Details 1", "Details 2", "Normal",
+#                        "Follow-up", "Radiology")
 
-    for s in ud.queryall():
-        print(s)
+#     for s in ud.queryall():
+#         print(s)

@@ -13,9 +13,9 @@ class MSSQLConnection:
                                                                                              database,
                                                                                              username,
                                                                                              password))
-            cls.connection = pyodbc.connect(connection_string)
+            connection = pyodbc.connect(connection_string)
             print("Connected to the database.")
-            return cls.connection
+            return connection
         except Exception as e:
             print('Error in connection: ', e)
 
@@ -29,11 +29,11 @@ class MSSQLConnection:
             print('Error in connection: ', e)
 
 
-if __name__ == '__main__':
-    driver = 'SQL Server'
-    server = 'DANHTRANCONG'
-    database = 'python'
-    username = ''
-    password = ''
-    # Kết nối cơ sở dữ liệu
-    #a = MSSQLConnection.connect(driver, server, database, username, password)
+# if __name__ == '__main__':
+#     driver = 'SQL Server'
+#     server = 'DANHTRANCONG'
+#     database = 'python'
+#     username = ''
+#     password = ''
+#     # Kết nối cơ sở dữ liệu
+#     #a = MSSQLConnection.connect(driver, server, database, username, password)

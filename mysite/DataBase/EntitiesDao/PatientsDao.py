@@ -17,16 +17,18 @@ class PatientsDao:
             cursor = connection.cursor()
             # Execute custom query
             sql = "select * from tb_BenhNhan"
-            cursor.execute(sql)
-            rows = cursor.fetchall()
+            # cursor.execute(sql)
+            rows = cursor.execute(sql).fetchall()
             for row in rows:
                 bn = BenhNhan.BenhNhan(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8])
                 patients.append(bn)
-            # Close connection
         except Exception as e:
             print(e)
         finally:
-            MSSQLConnection.MSSQLConnection.close_connection()
+            # Close connection
+            # MSSQLConnection.MSSQLConnection.close_connection()
+            cursor.close()
+            connection.close()
             return patients
 
     def querybyid(self, id):
@@ -47,12 +49,13 @@ class PatientsDao:
             row = cursor.fetchone()
             if row:
                 benhnhan = BenhNhan.BenhNhan(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8])
-            # Close connection
         except Exception as e:
             print(e)
         finally:
             # Close connection
-            MSSQLConnection.MSSQLConnection.close_connection()
+            # MSSQLConnection.MSSQLConnection.close_connection()
+            cursor.close()
+            connection.close()
             return benhnhan
 
     def insert(self, bn):
@@ -81,7 +84,9 @@ class PatientsDao:
         except Exception as e:
             print(e)
         finally:
-            MSSQLConnection.MSSQLConnection.close_connection()
+            # MSSQLConnection.MSSQLConnection.close_connection()
+            cursor.close()
+            connection.close()
 
     def update(self, bn):
         try:
@@ -111,7 +116,9 @@ class PatientsDao:
         except Exception as e:
             print(e)
         finally:
-            MSSQLConnection.MSSQLConnection.close_connection()
+            # MSSQLConnection.MSSQLConnection.close_connection()
+            cursor.close()
+            connection.close()
 
     def delete(self, id):
         """Delete by id"""
@@ -132,13 +139,14 @@ class PatientsDao:
         except Exception as e:
             print(e)
         finally:
-            MSSQLConnection.MSSQLConnection.close_connection()
+            # MSSQLConnection.MSSQLConnection.close_connection()
+            cursor.close()
+            connection.close()
 
-
-if __name__ == '__main__':
-    pd = PatientsDao()
-    patient1 = BenhNhan.BenhNhan(509, "BN001", "John Doe", "Male", 1990, "123 Main St", "555-1234", "123456789", "none")
-    # pd.insert(patient1)
-    pd.delete(509)
-    for bn in pd.queryallpatients():
-        print(bn)
+# if __name__ == '__main__':
+#     pd = PatientsDao()
+#     patient1 = BenhNhan.BenhNhan(509, "BN001", "John Doe", "Male", 1990, "123 Main St", "555-1234", "123456789", "none")
+#     # pd.insert(patient1)
+#     pd.delete(509)
+#     for bn in pd.queryallpatients():
+#         print(bn)

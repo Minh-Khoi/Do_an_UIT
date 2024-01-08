@@ -2,44 +2,29 @@
 
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ket qua Sieu am</title>
     <!-- jquery cdn -->
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"
-        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
-
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" 
+        integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" 
+        crossorigin="anonymous"></script>
+    
     <link rel="stylesheet" href="{% static 'main/nav/css.css' %}">
     <link rel="stylesheet" href="{% static 'main/grid_up/css.css' %}">
     <link rel="stylesheet" href="{% static 'main/grid_down/css.css' %}">
     <style>
-        body {
+        body{
             width: 100vw;
             border: 1px solid rgb(0, 17, 255);
             font-size: 14px;
         }
     </style>
 </head>
-
 <body>
-    <span class="screenDatas01">
-        [
-        {
-        "ID": "",
-        "IDBenhNhan": "650678",
-        "HoTenBenhNhan": "Danh Tran Cong",
-        "GioiTinh": "nam",
-        "NamSinh": "2023-11-29",
-        "DiaChi": null,
-        "SDT": "2054065056",
-        "BHYT": "55556666",
-        "Del": "N/A"
-        }
-        ]
-    </span>
-
+<span id="data_BenhNhan" style="display: none;">{{tb_BenhNhan}}</span>
+<span id="data_SieuAm" style="display: none;">{{tb_SieuAm}}</span>
     <nav>
         <div class="nav-left">
             <a href="/polls/don_vi" target="_blank">
@@ -48,14 +33,14 @@
                     <span>Đơn vị Sử dụng</span>
                 </button>
             </a>
-
+            
             <a href="" target="_blank">
                 <button class="nav-button">
                     <img src="{%static 'main/image/book.png'%}" alt="bag img" srcset="">
                     <span>Mẫu siêu âm</span>
                 </button>
             </a>
-
+            
             <a href="/polls/thong_tin_hc" target="_blank">
                 <button class="nav-button">
                     <img src="{%static 'main/image/statist.png'%}" alt="bag img" srcset="">
@@ -68,29 +53,30 @@
             <select name="field_date" id="field_date">
                 <option value="20231116">Sunday, November 26th 2023</option>
             </select>
-            <input type="checkbox" name="so_phieu" id="so_phieu" />
+            <input type="checkbox" name="so_phieu" id="so_phieu"/>
             <label for="so_phieu">So Phieu</label>
-            <input type="text" value="" />
+            <input type="text" value=""/>
         </div>
         <div style="clear: both;"></div>
     </nav>
-    <form action="" id ="myform">
-
+    <form action="">
+    
         <div class="grid_up">
             <div class="first">
                 <h3>THÔNG TIN HÀNH CHÍNH</h3>
                 <div class="group_three_columns">
                     <div class="row_">
                         <div class="first_col">
-                            <input type="checkbox" id="IDBN_check" name="IDBN_check" value="X" checked />
+                            <input type="checkbox" id="IDBN_check" name="IDBN_check" value="X" checked/>
                             <label for="IDBN_check">IDBN</label>
                         </div>
                         <div class="second_col" style="flex-basis: 30%;">
-                            <input type="text" id="IDBN" name="IDBN" value="{{IDBN.x1}}" />
+                            <input type="text" id="IDBN" name="IDBN" 
+                                    value="{{tb_BenhNhan.0.ID}}" disabled/>
                         </div>
                         <div class="third_col" style="flex-basis: 50%;">
                             <label for="khoa">Khoa</label>
-                            <select name="khoa" id="khoa">
+                            <select name="khoa" id="khoa" >
                                 <option value="nhi">Nhi</option>
                             </select>
                         </div>
@@ -102,11 +88,12 @@
                             <label for="ho_va_ten_BN">Họ và tên BN:</label>
                         </div>
                         <div class="second_col" style="flex-basis: 80%;">
-                            <input type="text" id="ho_va_ten_BN" name="ho_va_ten_BN" /> 
+                            <input type="text" id="ho_va_ten_BN" name="ho_va_ten_BN"
+                                    value="{{tb_BenhNhan.0.HoTenBenhNhan}}"/>
                         </div>
                         <div class="third_col" style="display:none">
-                            <input type="text" id="DSBN_button" name="DSBN_button" value="Danh sách Bệnh nhân"
-                                disabled />
+                            <input type="text" id="DSBN_button" 
+                                    name="DSBN_button" value="Danh sách Bệnh nhân" disabled/>
                         </div>
                     </div>
                 </div>
@@ -115,14 +102,14 @@
                         <div class="first_col">
                             <label for="nam_sinh">Năm sinh</label>
                         </div>
-                        <div class="second_col">
-                            <input type="date" id="nam_sinh" name="nam_sinh" />
+                        <div class="second_col" >
+                            <input type="date" id="nam_sinh" name="nam_sinh"/>
                         </div>
-                        <div class="third_col">
-                            <label for="gioi_tinh">Giới tính</label>
-                            <select id="gioi_tinh" name="gioi_tinh">
+                        <div class="third_col" >
+                            <label for="gioi_tinh">Gioi tinh</label>
+                            <select id="gioi_tinh" name="gioi_tinh" >
                                 <Option value="nam">Nam</Option>
-                                <Option value="nu">Nữ</Option>
+                                <Option value="nu">Nu</Option>
                             </select>
                         </div>
                     </div>
@@ -132,12 +119,12 @@
                         <div class="first_col">
                             <label for="sdt">SĐT</label>
                         </div>
-                        <div class="second_col">
-                            <input type="text" id="sdt" name="sdt" />
+                        <div class="second_col" >
+                            <input type="text" id="sdt" name="sdt" value="{{tb_BenhNhan.0.SDT}}"/>
                         </div>
-                        <div class="third_col">
+                        <div class="third_col" >
                             <label for="BHYT">BHYT</label>
-                            <input type="text" id="BHYT" name="BHYT" />
+                            <input type="text" id="BHYT" name="BHYT" value="{{tb_BenhNhan.0.BHYT}}"/>
                         </div>
                     </div>
                 </div>
@@ -146,8 +133,8 @@
                         <div class="first_col">
                             <label for="dia_chi">Địa chỉ</label>
                         </div>
-                        <div class="second_col">
-                            <select name="dia_chi" id="dia_chi"></select>
+                        <div class="second_col" >
+                            <input type="text" name="dia_chi" id="dia_chi" value="{{tb_BenhNhan.0.DiaChi}}"/>
                         </div>
                     </div>
                 </div>
@@ -156,8 +143,10 @@
                         <div class="first_col">
                             <label for="bs_sieu_am">BS Siêu âm</label>
                         </div>
-                        <div class="second_col">
-                            <select name="bs_sieu_am" id="bs_sieu_am"></select>
+                        <div class="second_col" >
+                            <select name="bs_sieu_am" id="bs_sieu_am">
+                                <option value="">Chọn bác sĩ</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -166,8 +155,10 @@
                         <div class="first_col">
                             <label for="bs_chi_dinh">BS chỉ định</label>
                         </div>
-                        <div class="second_col">
-                            <select name="bs_chi_dinh" id="bs_chi_dinh"></select>
+                        <div class="second_col" >
+                            <select name="bs_chi_dinh" id="bs_chi_dinh">
+                                <option value="">Chọn bác sĩ</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -176,8 +167,10 @@
                         <div class="first_col">
                             <label for="mau_sieu_am">Mẫu Siêu âm</label>
                         </div>
-                        <div class="second_col">
-                            <select name="mau_sieu_am" id="mau_sieu_am"></select>
+                        <div class="second_col" >
+                            <select name="mau_sieu_am" id="mau_sieu_am">
+                                <option value="">Chọn mẫu siêu âm</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -186,11 +179,13 @@
                         <div class="first_col" style="flex-wrap: wrap; align-content: center;">
                             <label for="chan_doan" style="margin-left: -1em;">Chẩn đoán</label>
                             <button style="color: red; width: 70%;" onclick="refreshForm(event)">(F2) Mới</button>
-                            <img src="{%static 'main/grid_up/bieu_tuong_chan_doan.png'%}" alt="bieu_tuong_chan_doan"
-                                style="flex-basis: 20%;width: 70%;" />
+                            <img src="{%static 'main/grid_up/bieu_tuong_chan_doan.png'%}" 
+                                 alt="bieu_tuong_chan_doan" style="flex-basis: 20%;width: 70%;" />
                         </div>
-                        <div class="second_col">
-                            <textarea name="chan_doan" id="chan_doan" cols="50" rows="10"></textarea>
+                        <div class="second_col" >
+                            <textarea name="chan_doan" id="chan_doan" cols="50" rows="10">
+                                {{tb_SieuAm.0.ChanDoan}}
+                            </textarea>
                         </div>
                     </div>
                 </div>
@@ -206,23 +201,34 @@
                     </p>
                 </object> -->
                 <div class="noi_dung_ket_qua" contenteditable="true">
+                    {% if tb_SieuAm.0.NoiDung1 %}
+                        {{tb_SieuAm.0.NoiDung1}}
+                    {% else %}
                     <ul>
                         <li>Heello</li>
                         <li>world</li>
                         <li>!!!</li>
                     </ul>
+                    {% endif %}
                 </div>
             </div>
         </div>
-
+    
         <div class="grid_down">
-            <div class="first">
-                <!-- <div class="jumbotron" >
+            <div class="first" >
+                <button type="button" class="luu_datas" onclick="save_home()">
+                    {% if tb_BenhNhan.0.ID %}
+                    Cập nhật
+                    {% else %}
+                    LƯU
+                    {% endif %}
+                </button>
+                <div class="jumbotron" >
                     <div style="text-align: center;">
                         <video id="video" style="text-align: center; border-radius: 20px;"></video>
                     </div>
-                </div> -->
-                <button type="button" class="luu_datas" onclick="save_home()">LƯU</button>
+                </div> 
+                <button type="button" onclick="clickPhoto();">Take Photo</button>
             </div>
             <div class="second">
                 <div class="flexed_area">
@@ -247,11 +253,15 @@
                     <div class="align_right" style="flex-basis: 99%;">
                         <div class="ket_luan_container">
                             <h3><label for="ket_luan">Kết luận</label></h3>
-                            <div class="ket_luan" id="ket_luan" contenteditable="true"></div>
+                            <div class="ket_luan" id="ket_luan" contenteditable="true">
+                                {{tb_SieuAm.0.KetLuan}}
+                            </div>
                         </div>
                         <div class="de_nghi_container">
                             <h3><label for="de_nghi">Đề nghị</label></h3>
-                            <div class="de_nghi" id="de_nghi" contenteditable="true"></div>
+                            <div class="de_nghi" id="de_nghi" contenteditable="true">
+                                {{tb_SieuAm.0.DeNghi}}
+                            </div>
                         </div>
                         <!-- <div class="base_line">
                             <span style="float:left">
@@ -267,10 +277,10 @@
                         </div> -->
                     </div>
                 </div>
-                <!-- <div class="non_flexed_area" > 
+                <div class="non_flexed_area" > 
                     <canvas id="myCanvas" height="300"
                             style="text-align: center; border-radius: 20px; height: 100%;"></canvas>
-                </div> -->
+                </div> 
             </div>
         </div>
     </form>
@@ -278,8 +288,8 @@
 <script src="{% static 'main/nav/js.js' %}"></script>
 <script src="{% static 'sendAjax.js' %}"></script>
 <script src="{% static 'main/ajaxBuild.js' %}"></script>
-<script src="{% static 'main/init.js' %}"></script>
-<!-- <script src="{% static 'main/grid_down/camera.js' %}"></script> -->
+<script src="{% static 'main/init_.js' %}"></script>
+<script src="{% static 'main/grid_down/camera.js' %}"></script>
 <script>
     function displayDateFormat_1() {
         const dateInput = document.getElementById('ngay_tai_kham');
@@ -290,7 +300,7 @@
         const month = date.getMonth();
         const dayOfMonth = date.getDate();
         const year = date.getFullYear();
-
+    
         const formattedDate = getDayOfWeek(dayOfWeek) + ', ' + getMonthName(month) + ' ' + dayOfMonth + ', ' + year;
         console.log(formattedDate);
         document.querySelector('.date_formatted_display').innerHTML = formattedDate;
@@ -302,15 +312,21 @@
     }
 
     function getMonthName(month) {
-        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July',
-            'August', 'September', 'October', 'November', 'December'];
+        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 
+                        'August', 'September', 'October', 'November', 'December'];
         return months[month];
     }
-
 </script>
-
 <script>
-    populateTable()
-</script>
+    $(document).ready(function () {
+        let bs_chi_dinh = '{{tb_SieuAm.0.TenBacSiChiDinh}}';
+        let bs_sieu_am = '{{tb_SieuAm.0.TenBacSiSieuAm}}';
+        let mau_sieu_am = '{{tb_SieuAm.0.MauSieuAm}}';
+        load_bacsi_and_mausieuam(bs_chi_dinh,bs_sieu_am,mau_sieu_am);
+        let ngaysinh = '{{tb_BenhNhan.0.NamSinh}}';
+        populateNgaySinhDatas(ngaysinh);
+    });
 
+    
+</script>
 </html>

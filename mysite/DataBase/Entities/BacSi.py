@@ -17,5 +17,5 @@ class BacSi:
         return self.__id
 
 
-if __name__ == '__main__':
-    print(123)
+# if __name__ == '__main__':
+#     print(123)
