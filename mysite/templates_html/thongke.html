@@ -120,7 +120,8 @@
                         </select>
                     </td>
                     <td colspan="2" style="padding-left: 45px;">
-                        <input type="button" name="delete" value="Xóa" id="delete">
+                        <button type="button" class="xoa_ten" 
+                                data-action="delete" onclick="doSubmit(event)">Xóa</button>
                     </td>
                 </tr>
                 <tr>
@@ -151,7 +152,7 @@
             </tr>
             <tr style="display: none;" onclick="tableClick(event)">
                 <td></td>
-                <td><input type="checkbox"></td>
+                <td><input type="radio"></td>
                 <td>Default</td>
                 <td>Default</td>
                 <td>Default</td>
@@ -176,6 +177,7 @@
 <script src="{% static 'sendAjax.js' %}"></script>
 <script src="{% static 'thong_tin_hc/init.js' %}"></script>
 <script src="{% static 'thong_tin_hc/tableClick.js' %}"></script>
+<script src="{% static 'thong_tin_hc/submit.js' %}"></script>
 <!-- <script>
     window.onload = () => {
     }
