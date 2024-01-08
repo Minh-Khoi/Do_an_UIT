@@ -47,7 +47,11 @@ function populateTable() {
         console.log(jsonObj.tb_BenhNhan);
         let table_tr_DOM_cloned = $("table.danh_sach_thong_ke  tr:not(.top_row)").first().clone();
         $(table_tr_DOM_cloned).css("display", "");
-        $(table_tr_DOM_cloned).find("td:nth-child(2)").find("input").attr("id", "chon_" + i);
+        debugger;
+        $(table_tr_DOM_cloned).find("td:nth-child(2)").find("input")
+                                                        .attr("id", "chon_" + i)
+                                                        .attr("name", "chon")
+                                                        .val(jsonObj.tb_BenhNhan[i].ID);
         $(table_tr_DOM_cloned).find("td:nth-child(3)").html(jsonObj.tb_BenhNhan[i].ID);
         $(table_tr_DOM_cloned).find("td:nth-child(4)").html(jsonObj.tb_SieuAm[i].Ngay);
         $(table_tr_DOM_cloned).find("td:nth-child(5)").html("");
@@ -101,6 +105,9 @@ function load_bacsi_and_mausieuam() {
 function addOptionsIntoSelect(domSelector, valuesArray) {
     for (let i = 0; i < valuesArray.length; i++) {
         let optionDOM = document.createElement("option");
+        if (domSelector == "select#loaisieuam") {
+            optionDOM.setAttribute("data-compare", valuesArray[i].HTML);
+        }
         optionDOM.value = valuesArray[i].ID;
         optionDOM.innerHTML = valuesArray[i].HTML;
         $(domSelector).append(optionDOM);

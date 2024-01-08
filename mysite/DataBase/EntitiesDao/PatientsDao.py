@@ -99,7 +99,7 @@ class PatientsDao:
             cursor = connection.cursor()
             # Execute custom query
             sql = ('update tb_BenhNhan set '
-                   'IDBenhNhan = \'{0}\', HoTenBenhNhan = \'{1}\', GioiTinh=\'{2}\', '
+                   'IDBenhNhan = \'{0}\', HoTenBenhNhan = N\'{1}\', GioiTinh=\'{2}\', '
                    'NamSinh={3}, DiaChi=\'{4}\', SDT=\'{5}\', BHYT=\'{6}\', Del=\'{7}\' '
                    'where id ={8}').format(bn.getidbenhnhan(),
                                            bn.gethotenbenhnhan(),

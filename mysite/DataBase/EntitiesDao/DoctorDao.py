@@ -62,7 +62,7 @@ class DoctorDao:
                                                                  dbconfig.password)
             cursor = connection.cursor()
             # Execute custom query
-            sql = 'update tb_BacSi set HoTenBacSi = \'{0}\', HinhChuKy = \'{1}\'  where id = {2}'.format(bs.gethoten(),
+            sql = 'update tb_BacSi set HoTenBacSi = N\'{0}\', HinhChuKy = \'{1}\'  where id = {2}'.format(bs.gethoten(),
                                                                                                          bs.getchuky(),
                                                                                                          bs.getid())
             cursor.execute(sql)

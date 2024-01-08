@@ -48,7 +48,7 @@ function addOptionsIntoSelect(domSelector, valuesArray, default_value_rendered) 
         optionDOM.innerHTML = valuesArray[i].HTML;
         let found = valuesArray[i].ID == default_value_rendered;
         let foundTenMauSieuAm = domSelector == "select#mau_sieu_am" && valuesArray[i].HTML == default_value_rendered;
-        
+        debugger;
         if (found || foundTenMauSieuAm) {
             optionDOM.selected = true;
         } 
@@ -72,7 +72,6 @@ function populateNgaySinhDatas(ngaysinhStr) {
 }
 // Nội dung kết quả
 function load_noidung(noidung) {
-    debugger;
     if (noidung.length > 0) {
         $(".noi_dung_ket_qua").html(noidung);
     }

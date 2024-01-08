@@ -5,7 +5,7 @@ function sendAPI(requestBody, url_path) {
         data: requestBody,
         dataType: "json",
         success: function (response) {
-            alert("API request send successfully");
+            alert(response[0]);
         },
         error: function(jqXHR, textStatus, errorThrown) {
             // Handle error

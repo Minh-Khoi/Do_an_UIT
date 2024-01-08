@@ -3,6 +3,19 @@
 
 USE [Importing]
 GO
+/* drop all table */
+drop table tb_BacSi
+drop table tb_SieuAm
+drop table tb_BenhNhan
+drop table tb_MauSieuAm
+drop table tb_DangKy
+drop table tb_GioiTinh
+drop table tb_HeThong
+drop table tb_Khoa
+drop table tb_KieuIn
+drop table InKetQua
+
+
 /****** Object:  Table [dbo].[InKetQua]    Script Date: 11/28/2023 8:26:34 PM ******/
 SET ANSI_NULLS ON
 GO
@@ -831,3 +844,19 @@ INSERT [dbo].[tb_SieuAm] ([ID], [Ngay], [SoPhieu], [IDBenhNhan], [TenBenhNhan], 
 ', N'', N'', N'', NULL)
 GO
 set identity_insert [dbo].[tb_SieuAm] off
+
+
+  update tb_SieuAm set NoiDung1 = 'NoiDung1 NoiDung1 NoiDung1 NoiDung1 NoiDung1 NoiDung1 NoiDung1 NoiDung1 NoiDung1 NoiDung1 
+  NoiDung1 NoiDung1 NoiDung1 NoiDung1 NoiDung1 NoiDung1 NoiDung1 
+  NoiDung1 NoiDung1 NoiDung1 NoiDung1 NoiDung1 NoiDung1 NoiDung1 
+  NoiDung1 NoiDung1 NoiDung1 NoiDung1 NoiDung1 NoiDung1 NoiDung1 '
+
+
+  Insert into tb_BacSi values ('Nguyen Ngoc Minh Khoi',''), ('BUI VI',''), ('Danh',''),('123 Khoi','')
+
+  delete from tb_SieuAm where ID in (117,118)
+  
+  update tb_SieuAm set IDBenhNhan = '509' where id = '115'
+  update tb_SieuAm set IDBenhNhan = '510' where id = '116'
+
+  update tb_MauSieuAm set TenMau = N'Siêu Âm Động Mạch Cảnh', TieuDe = N'Siêu Âm Động Mạch Cảnh' where ID=83

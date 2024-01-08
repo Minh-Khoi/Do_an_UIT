@@ -77,9 +77,9 @@ class UltrasoundDao:
             # Execute custom query
             sql = ('update tb_SieuAm '
                    'set ngay=\'{0}\', sophieu=\'{1}\', idbenhnhan=\'{2}\', tenbenhnhan=\'{3}\', '
-                   'tenbacsisieuam=\'{4}\', tenbacsichidinh = \'{5}\', mausieuam = \'{6}\', '
-                   'chandoan = \'{7}\', noidung1 = \'{8}\', noidung2 = \'{9}\', '
-                   'ketluan = \'{10}\', denghi = \'{11}\', khoa = \'{12}\' where id = \'{13}\'').format(
+                   'tenbacsisieuam=\'{4}\', tenbacsichidinh = \'{5}\', mausieuam = N\'{6}\', '
+                   'chandoan = N\'{7}\', noidung1 = N\'{8}\', noidung2 = \'{9}\', '
+                   'ketluan = N\'{10}\', denghi = N\'{11}\', khoa = N\'{12}\' where idbenhnhan = \'{13}\'').format(
                 sieuam.getngay(),
                 sieuam.getsophieu(),
                 sieuam.getidbenhnhan(),

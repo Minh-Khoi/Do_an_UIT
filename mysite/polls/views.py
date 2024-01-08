@@ -94,8 +94,11 @@ def save_home(request):
 
         bn = BenhNhan(id=ID, idbenhnhan=IDBenhNhan, hotenbenhnhan=HoTenBenhNhan, gioitinh=GioiTinh,
                       namsinh=NamSinh, diachi=DiaChi, sdt=SDT, bhyt=BHYT, dlt=Del)
+        if ID.isspace() or len(ID) == 0:
+            PatientsDao().insert(bn)
+        else:
+            PatientsDao().update(bn)
 
-        PatientsDao().insert(bn)
 
         sieuam_data = data.get('tb_SieuAm', [])[0]
         ID_SieuAm = sieuam_data.get('ID')
@@ -117,10 +120,13 @@ def save_home(request):
                         sophieu=SoPhieu, tenbacsisieuam=TenBacSiSieuAm,
                         tenbacsichidinh=TenBacSiChiDinh, mausieuam=MauSieuAm, chuandoan=ChanDoan, noidung1=NoiDung1,
                         noidung2=NoiDung2, ketluan=KetLuan, denghi=DeNghi, khoa=Khoa)
+        if ID.isspace() or len(ID) == 0:
+            UltrasoundDao().insert(sieuam)
+        else:
+            UltrasoundDao().update(sieuam)
 
-        UltrasoundDao().insert(sieuam)
 
-        return HttpResponse('Data saved successfully!')
+        return HttpResponse('["Data saved successfully!"]')
     except Exception as e:
         return HttpResponse(f'Error: {str(e)}')
 
@@ -141,7 +147,7 @@ def save_bacsi(request):
         dd = DoctorDao()
         dd.insert(bs)
 
-        return HttpResponse('Data saved successfully!')
+        return HttpResponse('["Data saved successfully!"]')
     except Exception as e:
         return HttpResponse(f'Error: {str(e)}')
 
