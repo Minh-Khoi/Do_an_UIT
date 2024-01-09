@@ -5,7 +5,7 @@ import dbconfig
 
 class UltrasoundDao:
     def delete(self, id):
-        """Delete by id"""
+        """Delete by idbenhnhan"""
         try:
             # Create connection
             connection = MSSQLConnection.MSSQLConnection.connect(dbconfig.driver,
@@ -16,10 +16,10 @@ class UltrasoundDao:
             cursor = connection.cursor()
 
             # Execute custom query
-            sql = "delete from tb_SieuAm where id= " + str(id)
+            sql = "delete from tb_SieuAm where idbenhnhan= " + str(id)
             cursor.execute(sql)
             connection.commit()
-            print("Delete completely with id: ", id)
+            print("Delete completely with idbenhnhan: ", id)
         except Exception as e:
             print(e)
         finally:
@@ -93,7 +93,7 @@ class UltrasoundDao:
                 sieuam.getketluan(),
                 sieuam.getdenghi(),
                 sieuam.getkhoa(),
-                sieuam.getid())
+                sieuam.getidbenhnhan())
             cursor.execute(sql)
             connection.commit()
 
