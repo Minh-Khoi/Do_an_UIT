@@ -69,7 +69,7 @@ class PatientsDao:
             cursor = connection.cursor()
             # Execute custom query
             sql = ('insert into tb_BenhNhan(IDBenhNhan, HoTenBenhNhan, GioiTinh, NamSinh, DiaChi, SDT, BHYT, Del) '
-                   'values (\'{0}\',\'{1}\',\'{2}\',\'{3}\',\'{4}\',\'{5}\',\'{6}\',\'{7}\')').format(
+                   'values (\'{0}\',N\'{1}\',N\'{2}\',N\'{3}\',N\'{4}\',N\'{5}\',N\'{6}\',N\'{7}\')').format(
                 bn.getidbenhnhan(),
                 bn.gethotenbenhnhan(),
                 bn.getgioitinh(),
@@ -80,7 +80,10 @@ class PatientsDao:
                 bn.getdel()
             )
             cursor.execute(sql)
+            cursor.execute("SELECT @@IDENTITY AS ID;")
+            lastrowid = cursor.fetchone()[0]  
             connection.commit()
+            return lastrowid
         except Exception as e:
             print(e)
         finally:
@@ -100,7 +103,7 @@ class PatientsDao:
             # Execute custom query
             sql = ('update tb_BenhNhan set '
                    'IDBenhNhan = \'{0}\', HoTenBenhNhan = N\'{1}\', GioiTinh=\'{2}\', '
-                   'NamSinh={3}, DiaChi=\'{4}\', SDT=\'{5}\', BHYT=\'{6}\', Del=\'{7}\' '
+                   'NamSinh={3}, DiaChi=N\'{4}\', SDT=\'{5}\', BHYT=\'{6}\', Del=\'{7}\' '
                    'where id ={8}').format(bn.getidbenhnhan(),
                                            bn.gethotenbenhnhan(),
                                            bn.getgioitinh(),

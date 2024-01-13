@@ -39,8 +39,8 @@ class UltrasoundDao:
             # Execute custom query
             sql = ('insert into tb_SieuAm(ngay, sophieu, idbenhnhan, tenbenhnhan, tenbacsisieuam, tenbacsichidinh, '
                    'mausieuam, chandoan, noidung1, noidung2, ketluan, denghi, khoa) '
-                   'values (\'{0}\',\'{1}\',\'{2}\',\'{3}\',\'{4}\',\'{5}\',\'{6}\',\'{7}\''
-                   ',\'{8}\',\'{9}\',\'{10}\',\'{11}\',\'{12}\')').format(
+                   'values (\'{0}\',\'{1}\',\'{2}\',N\'{3}\',N\'{4}\',\'{5}\',N\'{6}\',N\'{7}\''
+                   ',N\'{8}\',N\'{9}\',N\'{10}\',N\'{11}\',N\'{12}\')').format(
                 sieuam.getngay(),
                 sieuam.getsophieu(),
                 sieuam.getidbenhnhan(),
@@ -76,7 +76,7 @@ class UltrasoundDao:
             cursor = connection.cursor()
             # Execute custom query
             sql = ('update tb_SieuAm '
-                   'set ngay=\'{0}\', sophieu=\'{1}\', idbenhnhan=\'{2}\', tenbenhnhan=\'{3}\', '
+                   'set ngay=\'{0}\', sophieu=\'{1}\', idbenhnhan=\'{2}\', tenbenhnhan=N\'{3}\', '
                    'tenbacsisieuam=\'{4}\', tenbacsichidinh = \'{5}\', mausieuam = N\'{6}\', '
                    'chandoan = N\'{7}\', noidung1 = N\'{8}\', noidung2 = \'{9}\', '
                    'ketluan = N\'{10}\', denghi = N\'{11}\', khoa = N\'{12}\' where idbenhnhan = \'{13}\'').format(
@@ -144,7 +144,7 @@ class UltrasoundDao:
                                                                  dbconfig.password)
             cursor = connection.cursor()
             # Execute custom query
-            sql = "select * from tb_SieuAm where IDBenhNhan='" + idbn + "'"
+            sql = "select * from tb_SieuAm where IDBenhNhan='" + str(idbn) + "'"
             cursor.execute(sql)
             row = cursor.fetchone()
             if row:

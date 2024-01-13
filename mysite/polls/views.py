@@ -29,7 +29,7 @@ def home(request):
 # Function này mình viết để thực hiện chức năng chỉnh sửa thông tin bệnh nhân
 def home_(request, idbn: str):
     benhnhan = PatientsDao().querybyid(idbn)
-    sieuam = UltrasoundDao().querybyid(benhnhan.getidbenhnhan())
+    sieuam = UltrasoundDao().querybyid(benhnhan.getid())
     context = {
         "tb_BenhNhan": [
             {
@@ -79,6 +79,7 @@ def save_home(request):
     try:
         request_body = request.body
         data = json.loads(request_body)
+        idinserted = None
 
         # Extract data for BenhNhan
         benhnhan_data = data.get('tb_BenhNhan', [])[0]
@@ -95,7 +96,7 @@ def save_home(request):
         bn = BenhNhan(id=ID, idbenhnhan=IDBenhNhan, hotenbenhnhan=HoTenBenhNhan, gioitinh=GioiTinh,
                       namsinh=NamSinh, diachi=DiaChi, sdt=SDT, bhyt=BHYT, dlt=Del)
         if ID.isspace() or len(ID) == 0:
-            PatientsDao().insert(bn)
+            idinserted = PatientsDao().insert(bn)
         else:
             PatientsDao().update(bn)
 
@@ -104,7 +105,7 @@ def save_home(request):
         ID_SieuAm = sieuam_data.get('ID')
         Ngay = sieuam_data.get('Ngay')
         SoPhieu = sieuam_data.get('SoPhieu')
-        IDBenhNhan_SieuAm = sieuam_data.get('IDBenhNhan')
+        IDBenhNhan_SieuAm = idinserted if idinserted is not None else sieuam_data.get('IDBenhNhan') 
         TenBenhNhan_SieuAm = sieuam_data.get('TenBenhNhan')
         TenBacSiSieuAm = sieuam_data.get('TenBacSiSieuAm')
         TenBacSiChiDinh = sieuam_data.get('TenBacSiChiDinh')

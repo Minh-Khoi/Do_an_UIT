@@ -4,3 +4,4 @@
 FE_designed/*
 .idea/*
 *.pyc
+*dbconfig.py
